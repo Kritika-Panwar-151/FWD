@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Login</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h2>Welcome Back</h2>
+                <p>Login to your account</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="username" required>
+                        <label for="username">Username</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <span class="error-message">Invalid username</span>
+                </div>
+
+                <div class="form-group password-wrapper">
+                    <div class="input-wrapper">
+                        <input type="password" id="password" required>
+                        <label for="password">Password</label>
+                        <span class="focus-border"></span>
+                        <button type="button" class="password-toggle">
+                            <span class="eye-icon"></span>
+                        </button>
+                    </div>
+                    <span class="error-message">Invalid password</span>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-wrapper">
+                        <input type="checkbox" id="remember">
+                        <span class="checkbox-label">Remember Me<span class="checkmark"></span></span>
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn login-btn">
+                    <span class="btn-text">Login</span>
+                    <span class="btn-loader"></span>
+                </button>
+
+                <div class="divider"><span>or continue with</span></div>
+
+                <div class="social-login">
+                    <button type="button" class="social-btn google-btn">
+                        <span class="social-icon google-icon"></span>Google
+                    </button>
+                    <button type="button" class="social-btn github-btn">
+                        <span class="social-icon github-icon"></span>GitHub
+                    </button>
+                </div>
+
+                <div class="signup-link">
+                    <p>Don't have an account? <a href="#">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
