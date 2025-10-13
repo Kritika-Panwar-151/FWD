@@ -9,9 +9,9 @@
 
 /* ===== Color Palette ===== */
 :root {
-  --primary: #4f46e5;   /* Vibrant Indigo */
-  --accent: #ff4ecd;    /* Pink Accent */
-  --highlight: #00ffe1; /* Aqua Glow */
+  --primary: #4f46e5;  /* Vibrant Indigo */
+  --accent: #ff4ecd;   /* Pink Accent */
+  --highlight: #00fbff; /* Aqua Glow */
   --background: #0a0a12;
   --surface: #161625;
   --card: #1e1e30;
@@ -26,10 +26,9 @@ body {
   color: var(--text);
   overflow-x: hidden;
   position: relative;
-  min-height: 100vh;
 }
 
-/* ===== Decorative Background Shapes ===== */
+/* ===== Add Decorative Background Shapes ===== */
 body::before,
 body::after {
   content: "";
@@ -37,10 +36,9 @@ body::after {
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  filter: blur(160px);
+  filter: blur(150px);
   z-index: -1;
   opacity: 0.25;
-  pointer-events: none;
 }
 
 body::before {
@@ -62,7 +60,6 @@ body::after {
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
-  width: 100%;
   z-index: 100;
 }
 
@@ -80,7 +77,6 @@ body::after {
   color: var(--highlight);
   font-weight: 700;
   letter-spacing: 1px;
-  text-shadow: 0 0 10px var(--highlight);
 }
 
 .nav-links a {
@@ -127,6 +123,7 @@ body::after {
   color: white;
 }
 
+
 /* ===== Hero Section ===== */
 .hero {
   position: relative;
@@ -137,42 +134,41 @@ body::after {
   text-align: center;
   background-color: var(--surface);
   overflow: hidden;
-  isolation: isolate; /* Ensures hero shapes stay behind text */
 }
 
 /* Decorative shapes inside hero */
-.hero::before,
-.hero::after {
+.hero::before {
   content: "";
   position: absolute;
-  border-radius: 50%;
-  filter: blur(150px);
-  opacity: 0.25;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.hero::before {
   width: 400px;
   height: 400px;
   background: var(--primary);
+  opacity: 0.2;
+  filter: blur(120px);
   top: 20%;
   left: 10%;
+  border-radius: 50%;
+  z-index: 0;
 }
 
 .hero::after {
+  content: "";
+  position: absolute;
   width: 500px;
   height: 500px;
   background: var(--accent);
+  opacity: 0.2;
+  filter: blur(150px);
   bottom: 10%;
   right: 10%;
+  border-radius: 50%;
+  z-index: 0;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
   max-width: 800px;
-  padding: 0 1.5rem;
 }
 
 .hero-content h2 {
@@ -192,83 +188,175 @@ body::after {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  flex-wrap: wrap;
 }
 
-/* ===== Features Section ===== */
+/* ===== Features ===== */
 .features {
   background: var(--surface);
   padding: 5rem 2rem;
   text-align: center;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-/* Subtle background dots pattern */
-.features::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  z-index: 0;
 }
 
 .section-title h2 {
   font-size: 2.5rem;
-  color: var(--highlight);
-  margin-bottom: 0.5rem;
-  position: relative;
-  z-index: 1;
+  margin-bottom: 0.8rem;
 }
 
 .section-title p {
   color: var(--text-muted);
-  margin-bottom: 2rem;
-  position: relative;
-  z-index: 1;
+  margin-bottom: 3rem;
 }
 
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  position: relative;
-  z-index: 1;
 }
 
 .card {
   background: var(--card);
-  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 0 10px rgba(79, 70, 229, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border);
+  transition: 0.3s;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 25px rgba(79, 70, 229, 0.4);
+  box-shadow: 0 0 20px rgba(79, 140, 255, 0.1);
 }
 
 .icon-box {
   font-size: 2rem;
-  color: var(--accent);
   margin-bottom: 1rem;
+}
+
+/* ===== How It Works ===== */
+.how-it-works {
+  background: #0f1620;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.circle {
+  height: 60px;
+  width: 60px;
+  margin: 0 auto 1rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.circle.accent {
+  background: var(--accent);
+}
+
+/* ===== Benefits ===== */
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: center;
+  gap: 3rem;
+  padding: 5rem 2rem;
+  background: var(--surface);
+}
+
+.benefit-point {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.check {
+  color: var(--primary);
+  font-size: 1.5rem;
+}
+
+.benefit-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stats-card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(79, 140, 255, 0.1);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.stat-number.accent {
+  color: var(--accent);
+}
+
+.stat-label {
+  color: var(--text-muted);
+}
+
+/* ===== CTA ===== */
+.cta {
+  background: linear-gradient(to right, var(--primary), var(--accent));
+  color: white;
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.cta h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.cta p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #f1f1f1;
+}
+
+.cta-btn {
+  background: #fff;
+  color: var(--primary);
+  font-size: 1.1rem;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
 }
 
 /* ===== Footer ===== */
 .footer {
-  background: var(--surface);
+  background: #11161d;
   padding: 4rem 2rem;
-  color: var(--text-muted);
-  text-align: center;
-  border-top: 1px solid var(--border);
 }
 
-.footer h3 {
-  color: var(--highlight);
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer h4 {
+  font-weight: bold;
   margin-bottom: 1rem;
 }
 
@@ -278,12 +366,11 @@ body::after {
 }
 
 .footer a:hover {
-  color: var(--accent);
+  color: var(--primary);
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--border);
-  padding-top: 1rem;
-  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 3rem;
   color: var(--text-muted);
 }
