@@ -1,0 +1,272 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  /* Fun vibrant animated gradient */
+  background: linear-gradient(-45deg, #ff6ec4, #7873f5, #22ce78, #ffcc70);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  color: #333;
+}
+
+/* Animate gradient movement */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Layout */
+.page-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Left Side */
+.hero-section {
+  flex: 1;
+  background: url('https://images.unsplash.com/photo-1601597111243-32372e3c88f6?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  position: relative;
+  display: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem;
+}
+
+.site-logo {
+  height: 130px; /* adjust size */
+  width: auto;  /* maintain aspect ratio */
+  display: block;
+}
+
+.hero-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  color: #f2f2f2;
+  margin-bottom: 2rem;
+}
+
+.stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stats div h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.stats div p {
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+/* Right Side */
+.form-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+
+  /* Glass effect */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.form-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+
+  /* Glass effect for inner box */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-header h2 {
+  color: #111;
+  font-size: 1.8rem;
+}
+
+.form-header p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.3);
+  color: #111;
+  transition: 0.3s;
+  backdrop-filter: blur(10px);
+}
+
+.input-group input::placeholder {
+  color: #666;
+}
+
+.input-group input:focus {
+  border-color: #6b5bff;
+  box-shadow: 0 0 6px rgba(107, 91, 255, 0.4);
+  outline: none;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(90deg, #6b5bff, #ff6ec4);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primary-btn:hover {
+  background: linear-gradient(90deg, #ff6ec4, #6b5bff);
+  transform: scale(1.03);
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 1.5rem 0;
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #ccc;
+}
+
+.divider::before {
+  left: 0;
+}
+.divider::after {
+  right: 0;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.outline-btn {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  background: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.outline-btn:hover {
+  background: rgba(107, 91, 255, 0.1);
+}
+
+.switch-text {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.switch-text button {
+  background: none;
+  border: none;
+  color: #6b5bff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.switch-text button:hover {
+  text-decoration: underline;
+}
+
+.terms {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: #555;
+}
+
+.terms a {
+  color: #6b5bff;
+}
+
+/* Responsive */
+@media (min-width: 992px) {
+  .hero-section {
+    display: block;
+  }
+}
