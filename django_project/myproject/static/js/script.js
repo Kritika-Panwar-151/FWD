@@ -1,38 +1,53 @@
-// script.js
+const authBox = document.getElementById("authBox");
+const goSignup = document.getElementById("goSignup");
+const goLogin = document.getElementById("goLogin");
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Password toggle
-    const toggleBtn = document.querySelector(".password-toggle");
-    const passwordInput = document.getElementById("password");
-    const eyeIcon = toggleBtn.querySelector(".eye-icon");
-
-    toggleBtn.addEventListener("click", () => {
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            eyeIcon.classList.add("show-password");
-        } else {
-            passwordInput.type = "password";
-            eyeIcon.classList.remove("show-password");
-        }
-    });
-
-    // Login form submit simulation
-    const loginForm = document.getElementById("loginForm");
-    const loginBtn = document.querySelector(".login-btn");
-    const btnText = loginBtn.querySelector(".btn-text");
-    const btnLoader = loginBtn.querySelector(".btn-loader");
-
-    loginForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        // Show loading
-        loginBtn.classList.add("loading");
-
-        setTimeout(() => {
-            loginBtn.classList.remove("loading");
-
-            // Here you can do actual Django login post
-            alert("Login successful (simulation)!");
-        }, 1500);
-    });
+// Click toggles
+goSignup.addEventListener("click", () => {
+  authBox.classList.add("signup-mode");
 });
+
+goLogin.addEventListener("click", () => {
+  authBox.classList.remove("signup-mode");
+});
+
+// Scroll toggles
+window.addEventListener("wheel", (event) => {
+  if (event.deltaY > 0) {
+    authBox.classList.add("signup-mode");
+  } else if (event.deltaY < 0) {
+    authBox.classList.remove("signup-mode");
+  }
+});
+
+// Swipe / Drag toggle (mouse or touch)
+let startY = 0;
+let endY = 0;
+
+// For mouse
+window.addEventListener("mousedown", (e) => {
+  startY = e.clientY;
+});
+window.addEventListener("mouseup", (e) => {
+  endY = e.clientY;
+  handleSwipe();
+});
+
+// For touch devices
+window.addEventListener("touchstart", (e) => {
+  startY = e.touches[0].clientY;
+});
+window.addEventListener("touchend", (e) => {
+  endY = e.changedTouches[0].clientY;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  if (startY - endY > 80) {
+    // Swipe up → show signup
+    authBox.classList.add("signup-mode");
+  } else if (endY - startY > 80) {
+    // Swipe down → show login
+    authBox.classList.remove("signup-mode");
+  }
+}
