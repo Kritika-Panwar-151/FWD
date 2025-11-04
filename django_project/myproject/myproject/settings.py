@@ -158,7 +158,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',  # your app
+    'hostel',  # hostel app added
 ]
 
 MIDDLEWARE = [
@@ -193,9 +193,23 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # Using SQLite3 for simplicity
 DATABASES = {
+    #Before
+    #'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': BASE_DIR / 'db.sqlite3',
+    #}
+    
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hostelgo_db',       # your database name
+        'USER': 'project',              # your MySQL username
+        'PASSWORD': 'project',              # your MySQL password (if any)
+        'HOST': '127.0.0.1',         # or 'localhost'
+        'PORT': '3306',              # default MySQL port
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 

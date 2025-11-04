@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HostelGo | BMSCE</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 
 <body>
@@ -12,8 +13,8 @@
     <!-- LEFT INFO SECTION -->
     <div class="left">
       
-      <h2>HostelGo</h2>
-      <h1>BMS College of Engineering</h1>
+      <title>HostelGo</title>
+
       <p>
         <strong>HostelGo</strong> is a smart hostel management system designed for
         BMSCE students. Manage your hostel room, check notices, and stay updated — all in one place.
@@ -27,7 +28,7 @@
           <!-- LOGIN FORM -->
           <form class="login-form">
             <h3>Login</h3>
-            <p>Welcome back! Access your HostelGo dashboard.</p>
+            <p>Welcome back! Log in to manage your hostel details, view announcements, and stay connected with your campus life.</p>
             <div class="input-box">
               <input type="email" placeholder="Email Address" required />
             </div>
@@ -36,14 +37,14 @@
             </div>
             <button type="submit">Login</button>
             <div class="toggle" id="goSignup">
-              Don’t have an account? <span>Scroll down to Sign up</span>
+              Don’t have an account? <span>Scroll down or swipe up to Sign up</span>
             </div>
           </form>
 
           <!-- SIGNUP FORM -->
           <form class="signup-form">
             <h3>Sign Up</h3>
-            <p>Create your HostelGo account and get started.</p>
+            <p>Join HostelGo — your smart platform for managing hostel life, from room allocation to daily updates.</p>
             <div class="input-box">
               <input type="text" placeholder="Full Name" required />
             </div>
@@ -55,7 +56,7 @@
             </div>
             <button type="submit">Create Account</button>
             <div class="toggle" id="goLogin">
-              Already have an account? <span>Scroll up to Login</span>
+              Already have an account? <span>Scroll up or swipe down to Login</span>
             </div>
           </form>
         </div>
@@ -63,6 +64,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

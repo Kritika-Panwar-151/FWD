@@ -11,13 +11,43 @@ goLogin.addEventListener("click", () => {
   authBox.classList.remove("signup-mode");
 });
 
-// Mouse scroll to switch forms
+// Scroll toggles
 window.addEventListener("wheel", (event) => {
   if (event.deltaY > 0) {
-    // Scroll down → show Sign Up
     authBox.classList.add("signup-mode");
   } else if (event.deltaY < 0) {
-    // Scroll up → show Login
     authBox.classList.remove("signup-mode");
   }
 });
+
+// Swipe / Drag toggle (mouse or touch)
+let startY = 0;
+let endY = 0;
+
+// For mouse
+window.addEventListener("mousedown", (e) => {
+  startY = e.clientY;
+});
+window.addEventListener("mouseup", (e) => {
+  endY = e.clientY;
+  handleSwipe();
+});
+
+// For touch devices
+window.addEventListener("touchstart", (e) => {
+  startY = e.touches[0].clientY;
+});
+window.addEventListener("touchend", (e) => {
+  endY = e.changedTouches[0].clientY;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  if (startY - endY > 80) {
+    // Swipe up → show signup
+    authBox.classList.add("signup-mode");
+  } else if (endY - startY > 80) {
+    // Swipe down → show login
+    authBox.classList.remove("signup-mode");
+  }
+}

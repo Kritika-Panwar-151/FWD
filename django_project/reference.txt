@@ -1,0 +1,29 @@
+1)Superuser-Shows users list(Default given by djnago)
+http://127.0.0.1:8000/admin-
+Username:Kritika 
+Password:Kritika
+Mail:College
+
+2)Make chnages in myproject/settings.py
+This will store data in mysql now not in dbsqlite u can delete it
+Create new connection if root password u dont remember
+and give permission to user
+Do in root-
+use mysql;
+(
+    create user project IDENTIFIED BY "project";
+    SELECT User, Host FROM mysql.user;(see the server->%)
+)
+GRANT ALL PRIVILEGES ON *.* TO "project";
+GRANT ALL PRIVILEGES ON hostelgo_db.* TO 'project'@'%';
+FLUSH PRIVILEGES;
+create database hostelgo_db;
+
+3)New Connection made for this-
+Connection-project
+Username-project
+Password-project
+
+4)After making chnages in the model-database
+python manage.py makemigrations
+python manage.py migrate
