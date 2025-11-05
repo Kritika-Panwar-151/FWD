@@ -5,19 +5,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HostelGo | BMSCE</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  <style>
+    /* Optional: inline feedback styling */
+    .password-feedback {
+      font-size: 0.85rem;
+      text-align: left;
+      color: red;
+      margin-top: 4px;
+      display: none;
+    }
+    .password-feedback.valid {
+      color: green;
+      display: block;
+    }
+  </style>
 </head>
 
 <body>
   <div class="wrapper">
     <!-- LEFT INFO SECTION -->
     <div class="left">
-      
-      <title>HostelGo</title>
-
+      <h1>HostelGo</h1>
       <p>
-        <strong>HostelGo</strong> is a smart hostel management system designed for
-        BMSCE students. Manage your hostel room, check notices, and stay updated — all in one place.
+        <strong>HostelGo</strong> is your all-in-one digital hostel management platform for BMSCE students.  
+  Log in to explore available hostels, view room details, and submit your preferences — all in just a few clicks.
       </p>
     </div>
 
@@ -25,36 +37,62 @@
     <div class="right">
       <div class="auth-container" id="authBox">
         <div class="forms">
+          
           <!-- LOGIN FORM -->
-          <form class="login-form">
+          <form class="login-form" method="POST" action="">
+            {% csrf_token %}
             <h3>Login</h3>
-            <p>Welcome back! Log in to manage your hostel details, view announcements, and stay connected with your campus life.</p>
+            <p>Welcome back! Log in to manage your hostel details.</p>
+
             <div class="input-box">
-              <input type="email" placeholder="Email Address" required />
+              <input type="email" name="email" placeholder="Email Address" required />
             </div>
             <div class="input-box">
-              <input type="password" placeholder="Password" required />
+              <input type="password" name="password" placeholder="Password" required />
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" name="login">Login</button>
+
+            {% if messages %}
+              {% for msg in messages %}
+                {% if 'login' in msg.tags %}
+                  <p style="color: red; text-align: center;">{{ msg }}</p>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+
             <div class="toggle" id="goSignup">
               Don’t have an account? <span>Scroll down or swipe up to Sign up</span>
             </div>
           </form>
 
           <!-- SIGNUP FORM -->
-          <form class="signup-form">
+          <form class="signup-form" method="POST" action="">
+            {% csrf_token %}
             <h3>Sign Up</h3>
-            <p>Join HostelGo — your smart platform for managing hostel life, from room allocation to daily updates.</p>
+            <p>Join HostelGo — your smart platform for managing hostel life.</p>
+
             <div class="input-box">
-              <input type="text" placeholder="Full Name" required />
+              <input type="text" name="fullname" placeholder="Full Name" required />
             </div>
             <div class="input-box">
-              <input type="email" placeholder="Email Address" required />
+              <input type="email" name="email" placeholder="Email Address" required />
             </div>
             <div class="input-box">
-              <input type="password" placeholder="Password" required />
+              <input type="password" id="signupPassword" name="password" placeholder="Password" required />
+              <div class="password-feedback" id="passwordFeedback">
+                Password must contain at least 8 characters, one uppercase, one lowercase, one number, and one special character.
+              </div>
             </div>
-            <button type="submit">Create Account</button>
+            <button type="submit" id="signupBtn" name="signup" disabled>Create Account</button>
+
+            {% if messages %}
+              {% for msg in messages %}
+                {% if 'signup' in msg.tags %}
+                  <p style="color: red; text-align: center;">{{ msg }}</p>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+
             <div class="toggle" id="goLogin">
               Already have an account? <span>Scroll up or swipe down to Login</span>
             </div>
@@ -64,6 +102,6 @@
     </div>
   </div>
 
-  <script src="{% static 'js/script.js' %}"></script>
+  <script src="{% static 'js/login.js' %}"></script>
 </body>
 </html>

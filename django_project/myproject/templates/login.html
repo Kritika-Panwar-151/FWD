@@ -5,7 +5,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HostelGo | BMSCE</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  <style>
+    /* Optional: inline feedback styling */
+    .password-feedback {
+      font-size: 0.85rem;
+      text-align: left;
+      color: red;
+      margin-top: 4px;
+      display: none;
+    }
+    .password-feedback.valid {
+      color: green;
+      display: block;
+    }
+  </style>
 </head>
 
 <body>
@@ -14,8 +28,8 @@
     <div class="left">
       <h1>HostelGo</h1>
       <p>
-        <strong>HostelGo</strong> is a smart hostel management system designed for
-        BMSCE students. Manage your hostel room, check notices, and stay updated — all in one place.
+        <strong>HostelGo</strong> is your all-in-one digital hostel management platform for BMSCE students.  
+  Log in to explore available hostels, view room details, and submit your preferences — all in just a few clicks.
       </p>
     </div>
 
@@ -64,9 +78,12 @@
               <input type="email" name="email" placeholder="Email Address" required />
             </div>
             <div class="input-box">
-              <input type="password" name="password" placeholder="Password" required />
+              <input type="password" id="signupPassword" name="password" placeholder="Password" required />
+              <div class="password-feedback" id="passwordFeedback">
+                Password must contain at least 8 characters, one uppercase, one lowercase, one number, and one special character.
+              </div>
             </div>
-            <button type="submit" name="signup">Create Account</button>
+            <button type="submit" id="signupBtn" name="signup" disabled>Create Account</button>
 
             {% if messages %}
               {% for msg in messages %}
@@ -85,6 +102,6 @@
     </div>
   </div>
 
-  <script src="{% static 'js/script.js' %}"></script>
+  <script src="{% static 'js/login.js' %}"></script>
 </body>
 </html>
