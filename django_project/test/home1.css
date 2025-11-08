@@ -1,0 +1,239 @@
+/* === GLOBAL RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #0b0d24, #090a2b, #150b3e);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* === NAVBAR === */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  z-index: 1000;
+  background: linear-gradient(120deg, #3825c6, #532bd9, #8b2fe6);
+  background-size: 300% 300%;
+  animation: gradientFlow 10s ease infinite;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: background 0.4s ease, box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: linear-gradient(135deg, #2c1ea8, #4a28d1, #a03ff3);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: #ffbffb;
+}
+
+/* === HERO SECTION === */
+.hero {
+  height: 100vh;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(5, 5, 15, 0.6),
+      rgba(0, 0, 0, 0.85)
+    ),
+    url('../images/home.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  max-width: 800px;
+  padding: 20px;
+  backdrop-filter: blur(2px);
+  animation: fadeIn 1.5s ease;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 0 5px 12px rgba(0, 0, 0, 0.6);
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: #dcd2ff;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #4a3aff, #7b30e8, #d946f9);
+  background-size: 200% 200%;
+  animation: gradientFlow 6s ease infinite;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: scale(1.07);
+}
+
+/* === HOSTEL SECTION === */
+.hostel-section {
+  background: linear-gradient(135deg, #130b35, #190b4b, #1e0c60);
+  color: #fff;
+  text-align: center;
+  padding: 120px 40px;
+  border-top-left-radius: 80px;
+  border-top-right-radius: 80px;
+  transition: background 1s ease;
+}
+
+.hostel-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #d3b9ff;
+  font-weight: 700;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: linear-gradient(145deg, #241a60, #32247d);
+  border-radius: 20px;
+  width: 280px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.08);
+}
+
+
+
+.card h3 {
+  color: #f3e6ff;
+  font-size: 1.3rem;
+  margin-top: 15px;
+}
+
+.card p {
+  color: #ccc5ff;
+  padding: 0 15px 25px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* === CONTACT SECTION === */
+.contact-section {
+  background: linear-gradient(135deg, #2b1e90, #532bd9, #b93ff9);
+  text-align: center;
+  padding: 90px 20px;
+  color: #fff;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.contact-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #f1eaff;
+}
+
+.contact-section p {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #e3d7ff;
+}
+
+/* === FOOTER === */
+footer {
+  background: linear-gradient(90deg, #10082b, #1a0f49, #321770);
+  color: #f9f9ff;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  letter-spacing: 0.6px;
+}
+
+/* === SMOOTH ANIMATIONS === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+  }
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}

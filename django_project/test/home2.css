@@ -1,0 +1,202 @@
+/* ========== GLOBAL RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ========== BODY ========== */
+body {
+  background: #ffffff;
+  color: #1c1c1c;
+  overflow-x: hidden;
+}
+
+/* ========== NAVBAR ========== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 80px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  transition: 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a40;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  color: #5b47ff;
+  text-shadow: 0 0 8px rgba(90, 70, 255, 0.3);
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+  position: relative;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 50, 0.3);
+  backdrop-filter: blur(3px);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  max-width: 800px;
+  color: #fff;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(60, 60, 255, 0.4);
+}
+
+.hero p {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  color: #f0f0ff;
+  text-shadow: 0 0 6px rgba(50, 50, 255, 0.3);
+}
+
+.cta-btn {
+  margin-top: 30px;
+  display: inline-block;
+  background: linear-gradient(135deg, #5b47ff, #8e6fff);
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: 0 6px 20px rgba(120, 100, 255, 0.4);
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(100, 80, 255, 0.6);
+}
+
+/* ========== HOSTEL SECTION ========== */
+.hostel-section {
+  text-align: center;
+  padding: 120px 50px;
+  background: #f9f9ff;
+}
+
+.hostel-section h2 {
+  font-size: 2.2rem;
+  color: #1a1a40;
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.card {
+  width: 300px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(200, 200, 255, 0.4);
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(100, 80, 255, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+
+
+.card h3 {
+  color: #1c1c50;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* ========== CONTACT SECTION ========== */
+.contact-section {
+  text-align: center;
+  padding: 100px 50px;
+  background: rgba(240, 240, 255, 0.6);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.contact-section h2 {
+  font-size: 2rem;
+  color: #1a1a40;
+  margin-bottom: 15px;
+}
+
+.contact-section p {
+  color: #3a3a6e;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: rgba(240, 240, 255, 0.8);
+  text-align: center;
+  padding: 20px;
+  color: #333;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+}

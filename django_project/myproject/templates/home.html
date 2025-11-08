@@ -2,63 +2,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HostelGo | Home</title>
-  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HostelGo | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}?v={{ timestamp }}">
 </head>
 <body>
 
-  <!-- 🌈 Navbar -->
-  <nav class="navbar">
-    <div class="logo">🏠 HostelGo</div>
-    <ul>
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#hostels">Hostels</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </nav>
+    <nav class="navbar">
+        <div class="logo">🏠 HostelGo</div>
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#hostels">Hostels</a></li>
+            <li><a href="#info">Facilities</a></li>
+            <li><a href="#contact">Contact</a></li>
+            
+        </ul>
+    </nav>
 
-  <!-- 🏠 Hero Section -->
-  <section id="home" class="hero" style="background-image: url('{% static "images/home.png" %}');">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>Smart Hostel Management System</h1>
-      <p>BMSCE students can log in, explore available hostels, select preferences, and manage their choices — all in one place.</p>
-      <a href="#hostels" class="cta-btn">Explore Hostels</a>
-    </div>
-  </section>
+    <section id="home" class="hero" style="background-image: url('{% static "images/home.png" %}');">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Smart Hostel Management System</h1>
+            <p>BMSCE students can log in, explore available hostels, select preferences, and manage their choices — all in one place.</p>
+            <a href="#hostels" class="cta-btn">Explore Hostels</a>
+        </div>
+    </section>
 
-  <!-- 🧍 Hostel Section -->
-  <section id="hostels" class="hostel-section">
-    <h2>Choose Your Hostel</h2>
-    <div class="cards">
-      <div class="card" onclick="location.href='/boys_hostel'">
-        <img src="{% static 'images/home_boy.png' %}" alt="Boys Hostel">
-        <h3>Boys Hostel</h3>
-        <!--<p>View available rooms and submit your preferences.</p>-->
-      </div>
-      <div class="card" onclick="location.href='/girls_hostel'">
-        <img src="{% static 'images/home_girl.png' %}" alt="Girls Hostel">
-        <h3>Girls Hostel</h3>
-        <!--<p>Check out available hostels and manage your choices.</p>-->
-      </div>
-    </div>
-  </section>
+    <section id="hostels" class="hostel-section">
+        <h2>Choose Your Hostel</h2>
+        <div class="cards">
+            <div class="card boys-card" onclick="location.href='/boys_hostel'">
+                <div class="ribbon">Boys Hostel</div>
+                <h3>Dedicated Wing</h3>
+                <p>View available rooms and submit your preferences for the current academic year.</p>
+            </div>
+            <div class="card girls-card" onclick="location.href='/girls_hostel'">
+                <div class="ribbon">Girls Hostel</div>
+                <h3>Dedicated Wing</h3>
+                <p>Check out available facilities and manage your allocation choices online.</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- 📞 Contact Section -->
-  <section id="contact" class="contact-section">
-    <h2>Contact Us</h2>
-    <p>Email: <b>hostelgo@bmsce.ac.in</b> | Phone: <b>+91 98765 43210</b></p>
-    <p>Address: BMS College of Engineering, Basavanagudi, Bengaluru</p>
-  </section>
+    <section id="info" class="info-section">
+        <h2>Key Facilities & Features</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <i class="fas fa-wifi"></i>
+                <h3>High-Speed Wi-Fi</h3>
+                <p>24/7 dedicated internet access available across all floors for academic use.</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Secure Environment</h3>
+                <p>CCTV surveillance and professional security staff ensuring student safety.</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-utensils"></i>
+                <h3>Hygienic Mess</h3>
+                <p>Nutritious and varied meal plans prepared in a clean, modern kitchen.</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-hospital"></i>
+                <h3>Medical Support</h3>
+                <p>On-call medical assistance and first-aid facilities available 24 hours a day.</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- 🧾 Footer -->
-  <footer>
-    <p>© 2025 HostelGo | All Rights Reserved</p>
-  </footer>
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <p>Email: <b>hostelgo@bmsce.ac.in</b> | Phone: <b>+91 98765 43210</b></p>
+        <p>Address: BMS College of Engineering, Basavanagudi, Bengaluru</p>
+    </section>
 
-  <script src="{% static 'js/home.js' %}"></script>
+    <footer>
+        <p>© 2025 HostelGo | All Rights Reserved | BMS College of Engineering</p>
+    </footer>
+
+    <script src="{% static 'js/home.js' %}"></script>
 </body>
 </html>

@@ -11,9 +11,9 @@
 
   <!-- 🌈 Navbar -->
   <nav class="navbar">
-    <div class="logo">HostelGo</div>
+    <div class="logo">🏠 HostelGo</div>
     <ul>
-      <li><a href="#home">Home</a></li>
+      <li><a href="#home" class="active">Home</a></li>
       <li><a href="#hostels">Hostels</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#about">About</a></li>
@@ -30,27 +30,28 @@
     </div>
   </section>
 
-  <!-- 🧍 Hostel Section -->
-  <section id="hostels" class="hostel-section">
-    <h2>Choose Your Hostel</h2>
-    <div class="cards">
-      <div class="card" onclick="location.href='/boys_hostel'">
-        <img src="{% static 'images/boys-hostel.jpg' %}" alt="Boys Hostel">
-        <h3>Boys Hostel</h3>
-        <p>View available rooms and submit your preferences.</p>
-      </div>
-      <div class="card" onclick="location.href='/girls_hostel'">
-        <img src="{% static 'images/girls-hostel.jpg' %}" alt="Girls Hostel">
-        <h3>Girls Hostel</h3>
-        <p>Check out available hostels and manage your choices.</p>
-      </div>
+<!-- 🧍 Hostel Section -->
+<section id="hostels" class="hostel-section">
+  <h2>Choose Your Hostel</h2>
+  <div class="cards">
+    <div class="card" onclick="location.href='/boys_hostel'">
+      <!--<img src="{% static 'images/home_boy.png' %}" alt="Boys Hostel">-->
+      <h3>Boys Hostel</h3>
+      <!--<p>View available rooms and submit your preferences.</p>-->
     </div>
-  </section>
+    <div class="card" onclick="location.href='/girls_hostel'">
+      <!--<img src="{% static 'images/home_girl.png' %}" alt="Girls Hostel">-->
+      <h3>Girls Hostel</h3>
+      <!--<p>Check out available hostels and manage your choices.</p>-->
+    </div>
+  </div>
+</section>
+
 
   <!-- 📞 Contact Section -->
   <section id="contact" class="contact-section">
     <h2>Contact Us</h2>
-    <p>Email: hostelgo@bmsce.ac.in | Phone: +91 98765 43210</p>
+    <p>Email: <b>hostelgo@bmsce.ac.in</b> | Phone: <b>+91 98765 43210</b></p>
     <p>Address: BMS College of Engineering, Basavanagudi, Bengaluru</p>
   </section>
 
