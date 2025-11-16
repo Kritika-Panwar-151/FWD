@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logged Out</title>
+    <style>
+        body {
+            font-family: Poppins, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f7f7f7;
+            margin: 0;
+        }
+
+        .box {
+            background: white;
+            padding: 2.5rem 3.5rem;
+            border-radius: 1.2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 360px;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #444;
+            font-size: 1rem;
+            margin-top: .5rem;
+        }
+
+        /* Spinner */
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #ddd;
+            border-top-color: #007bff;
+            border-radius: 50%;
+            margin: 1rem auto;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Countdown circle */
+        .countdown {
+            font-size: 1.3rem;
+            color: #007bff;
+            font-weight: bold;
+            margin-top: .5rem;
+        }
+    </style>
+
+    <script>
+        let timeLeft = 5;
+
+        function startCountdown() {
+            const timer = document.getElementById("count");
+
+            const interval = setInterval(() => {
+                timeLeft--;
+                timer.innerText = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    window.location.href = "/";
+                }
+            }, 1000);
+        }
+
+        window.onload = startCountdown;
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <h2>You have been logged out</h2>
+
+        <!-- Rotating Circle -->
+        <div class="loader"></div>
+
+        <p>Redirecting to login page in</p>
+
+        <!-- Countdown Number -->
+        <div class="countdown">
+            <span id="count">5</span> seconds...
+        </div>
+    </div>
+</body>
+</html>

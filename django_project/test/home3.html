@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UniStay</title>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="brand">
+                <img src="{% static 'images/home_logo.png' %}" alt="UniStay" class="logo-img" />
+                <h1>UniStay</h1>
+            </div>
+            <div style="display:flex;gap:.5rem;align-items:center">
+                <button class="btn btn-ghost" onclick="scrollToId('about')">About</button>
+                <button class="btn btn-ghost" onclick="scrollToId('contact')">Contact</button>
+                <div class="search-box" id="headerSearchBtn">
+                    <i data-lucide="search"></i>
+                </div>
+                <div class="profile-box">
+                    <img src="{% static 'images/home_profile.png' %}" alt="User" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="inner container fade-in">
+            <div style="max-width:900px">
+                <h2>Find Your Perfect Hostel Near BMSCE</h2>
+                <p>Easy booking, verified accommodations, and hassle-free living for BMSCE students. Your home away from home starts here.</p>
+                <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+                    <button id="searchHostelBtn" class="btn hero-btn animate-pulse" class="btn btn-primary" onclick="scrollToId('search')">
+                        <i data-lucide="search"></i> Search Hostels
+                    </button>
+
+                    <button class="btn btn-outline" onclick="scrollToId('about')">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hostel-choice-section" id="chooseHostel">
+        <h2 class="hostel-choice-heading">Choose Your Hostel</h2>
+        <div class="hostel-choice-container">
+
+            <div class="hostel-choice-card girls-card">
+                <h3 class="hostel-choice-title">Girls Hostel</h3>
+            </div>
+
+            <div class="hostel-choice-card boys-card">
+                <h3 class="hostel-choice-title">Boys Hostel</h3>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="about">
+        <div class="container" style="padding:1rem 0">
+            <div class="fade-in" style="text-align:center;margin-bottom:2rem">
+                <h2 style="font-size:2rem;margin:.25rem 0">How It Works</h2>
+                <p class="muted" style="max-width:1000px;margin:0 auto">Three simple steps to find your perfect accommodation</p>
+            </div>
+
+            <div class="grid grid-3" style="max-width:2000px;margin:0 auto">
+                <div class="fade-in" style="text-align:center">
+                    <div class="circle primary">1</div>
+                    <h3>Search</h3>
+                    <p class="muted">Browse available hostels with detailed photos and amenities</p>
+                </div>
+                <div class="fade-in" style="text-align:center;animation-delay:.08s">
+                    <div class="circle accent">2</div>
+                    <h3>Compare</h3>
+                    <p class="muted">Compare prices, locations, and reviews from fellow students</p>
+                </div>
+                <div class="fade-in" style="text-align:center;animation-delay:.16s">
+                    <div class="circle primary">3</div>
+                    <h3>Book</h3>
+                    <p class="muted">Secure your spot with instant confirmation and easy payment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="container" style="padding:5rem 0 4rem 0">
+            <div class="grid grid-2" style="align-items:center;gap:3rem;max-width:1100px;margin:0 auto">
+                <div>
+                    <h2 style="font-size:2rem;margin:0 0 1rem">Made for BMSCE Students</h2>
+                    <div style="display:grid;gap:1rem">
+                        <div style="display:flex;gap:.75rem;align-items:flex-start">
+                            <i data-lucide="check-circle" style="height:24px;width:24px;color:var(--primary);flex:0 0 auto;margin-top:.15rem"></i>
+                            <div>
+                                <h3 style="margin:.1rem 0 .25rem">Student-Friendly Pricing</h3>
+                                <p class="muted">Affordable options that fit your budget without compromising on quality</p>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:.75rem;align-items:flex-start">
+                            <i data-lucide="check-circle" style="height:24px;width:24px;color:var(--primary);flex:0 0 auto;margin-top:.15rem"></i>
+                            <div>
+                                <h3 style="margin:.1rem 0 .25rem">24/7 Support</h3>
+                                <p class="muted">Always here to help with any questions or concerns about your booking</p>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:.75rem;align-items:flex-start">
+                            <i data-lucide="check-circle" style="height:24px;width:24px;color:var(--primary);flex:0 0 auto;margin-top:.15rem"></i>
+                            <div>
+                                <h3 style="margin:.1rem 0 .25rem">Flexible Terms</h3>
+                                <p class="muted">Semester-based and monthly options to suit your academic schedule</p>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:.75rem;align-items:flex-start">
+                            <i data-lucide="check-circle" style="height:24px;width:24px;color:var(--primary);flex:0 0 auto;margin-top:.15rem"></i>
+                            <div>
+                                <h3 style="margin:.1rem 0 .25rem">Community Reviews</h3>
+                                <p class="muted">Real feedback from BMSCE students who've stayed there</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="counter">
+                    <div>
+                        <div class="big">500+</div>
+                        <div class="muted" style="font-size:1.1rem">Happy Students</div>
+                        <div class="big big-accent" style="margin-top:1.5rem">50+</div>
+                        <div class="muted" style="font-size:1.1rem">Verified Hostels</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Find Your Home?</h2>
+            <p>Join hundreds of BMSCE students who've found their perfect accommodation through UniStay</p>
+            <button id="searchHostelBtn" class="btn hero-btn animate-pulse" class="btn btn-primary" onclick="scrollToId('search')">
+                <i data-lucide="search"></i> Start Your Search
+            </button>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="cols">
+                <div>
+                    <div class="brand" style="margin-bottom:.75rem">
+                        <i data-lucide="home" style="height:24px;width:24px;color:var(--primary)"></i>
+                        <h3 style="margin:0;font-size:1.25rem;color:var(--foreground)">UniStay</h3>
+                    </div>
+                    <p class="muted">Making hostel booking easy for BMSCE students</p>
+                </div>
+                <div>
+                    <h4 style="margin:0 0 .75rem">Quick Links</h4>
+                    <ul style="list-style:none;padding:0;margin:0;display:grid;gap:.5rem" class="muted">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#search">Search Hostels</a></li>
+                        <li><a href="#">List Your Hostel</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin:0 0 .75rem">Support</h4>
+                    <ul style="list-style:none;padding:0;margin:0;display:grid;gap:.5rem" class="muted">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin:0 0 .75rem">Contact</h4>
+                    <ul style="list-style:none;padding:0;margin:0;display:grid;gap:.5rem" class="muted">
+                        <li>BMSCE Campus</li>
+                        <li>Bangalore, India</li>
+                        <li>support@unistay.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footline">&copy; 2025 UniStay. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/home.js' %}"></script>
+</body>
+</html>

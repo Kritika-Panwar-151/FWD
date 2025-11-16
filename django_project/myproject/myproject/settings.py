@@ -148,7 +148,11 @@ SECRET_KEY = 'django-insecure-4ul7-7_47ke2_8ryrkp4&xaj)(ybceg-u5c)-74+r3-_i^o75v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+
 ALLOWED_HOSTS = []
+
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -241,3 +245,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # where Django looks for 
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
