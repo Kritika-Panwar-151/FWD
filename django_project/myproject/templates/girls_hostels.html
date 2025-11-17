@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>UniStay • Girls Hostels</title>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="{% static 'css/girls.css' %}">
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="brand">
+      <i data-lucide="home" class="nav-icon"></i>
+      <h1>UniStay</h1>
+    </div>
+
+    <div class="nav-buttons">
+
+      <a href="{% url 'home' %}" class="btn btn-ghost">Home</a>
+      <button class="btn btn-ghost" onclick="scrollToId('contact')">Contact</button>
+
+      <div class="profile-wrapper">
+        <div class="profile-box" id="profileBtn">
+          <img src="{% static 'images/home_profile.png' %}" alt="User">
+        </div>
+
+        <div class="profile-menu" id="profileMenu">
+
+          <div class="profile-menu-header">
+            <div class="profile-menu-avatar">
+              <img src="{% static 'images/home_profile.png' %}">
+            </div>
+            <div class="profile-menu-user">
+              <div class="profile-menu-name">{{ user.first_name }}</div>
+              <div class="profile-menu-email">{{ user.email }}</div>
+            </div>
+          </div>
+
+          <div class="profile-menu-divider"></div>
+
+          <a href="{% url 'bookings' %}" class="profile-menu-item">
+            <i data-lucide="home"></i> <span>My Bookings</span>
+          </a>
+
+          <div class="profile-menu-divider"></div>
+
+          <a href="{% url 'logout' %}" class="profile-menu-item profile-menu-danger">
+            <i data-lucide="log-out"></i> <span>Logout</span>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </nav>
+</header>
+
+<section class="intro-banner">
+  <div class="intro-content">
+    <h1>Find Your Perfect Girl's Hostel Near BMSCE</h1>
+    <p>Safe, comfortable, and student-friendly accommodations.</p>
+    <button class="btn btn-accent">
+      <i data-lucide="search"></i> Start Exploring
+    </button>
+  </div>
+</section>
+
+<div class="filter-bar">
+  <input type="text" placeholder="Search hostels..." />
+  <select>
+    <option>Sharing Type</option>
+    <option>Single</option>
+    <option>Twin</option>
+    <option>Triple</option>
+  </select>
+  <select>
+    <option>Sort by Rating</option>
+    <option>Lowest Price</option>
+    <option>Highest Rating</option>
+  </select>
+
+  <button class="btn btn-accent"><i data-lucide="filter"></i> Apply</button>
+</div>
+
+<section class="grid">
+
+  <div class="card">
+    <img src="{% static 'images/girls1.jpg' %}">
+    <div class="card-body">
+      <h3>Pink Petals PG</h3>
+      <p class="muted">Basavanagudi · 0.4 km</p>
+      <p>2/3 Sharing · Meals · WiFi · AC</p>
+      <div class="price">₹10,999 / month</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="{% static 'images/girls2.jpg' %}">
+    <div class="card-body">
+      <h3>Lotus Ladies Hostel</h3>
+      <p class="muted">Near Gate · 0.8 km</p>
+      <p>Twin Sharing · Attached Bath · Terrace Garden</p>
+      <div class="price">₹9,990 / month</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="{% static 'images/girls3.jpg' %}">
+    <div class="card-body">
+      <h3>Serene Stay</h3>
+      <p class="muted">Srinivasa Nagar · 1.1 km</p>
+      <p>Single · Laundry · Security · WiFi</p>
+      <div class="price">₹11,499 / month</div>
+    </div>
+  </div>
+
+</section>
+
+<footer>© 2025 UniStay • All Rights Reserved</footer>
+
+<script src="{% static 'js/girls.js' %}"></script>
+</body>
+</html>

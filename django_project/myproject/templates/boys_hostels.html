@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>UniStay • Boys Hostels</title>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="{% static 'css/boys.css' %}">
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="brand">
+      <i data-lucide="home" class="nav-icon"></i>
+      <h1>UniStay</h1>
+    </div>
+
+    <div class="nav-buttons">
+
+      <a href="{% url 'home' %}" class="btn btn-ghost">Home</a>
+      <button class="btn btn-ghost">Contact</button>
+
+      <div class="profile-wrapper">
+        <div class="profile-box" id="profileBtn">
+          <img src="{% static 'images/home_profile.png' %}">
+        </div>
+
+        <div class="profile-menu" id="profileMenu">
+
+          <div class="profile-menu-header">
+            <div class="profile-menu-avatar">
+              <img src="{% static 'images/home_profile.png' %}">
+            </div>
+            <div class="profile-menu-user">
+              <div class="profile-menu-name">{{ user.first_name }}</div>
+              <div class="profile-menu-email">{{ user.email }}</div>
+            </div>
+          </div>
+
+          <div class="profile-menu-divider"></div>
+
+          <a href="{% url 'bookings' %}" class="profile-menu-item">
+            <i data-lucide="home"></i> <span>My Bookings</span>
+          </a>
+
+          <div class="profile-menu-divider"></div>
+
+          <a href="{% url 'logout' %}" class="profile-menu-item profile-menu-danger">
+            <i data-lucide="log-out"></i> <span>Logout</span>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </nav>
+</header>
+
+<section class="intro-banner">
+  <div class="intro-content">
+    <h1>Find Your Perfect Boy's Hostel Near BMSCE</h1>
+    <p>Verified, safe, and budget-friendly living for BMSCE boys</p>
+    <button class="btn btn-accent"><i data-lucide="search"></i> Start Exploring</button>
+  </div>
+</section>
+
+<div class="filter-bar">
+  <input type="text" placeholder="Search hostels..." />
+  <select>
+    <option>Sharing Type</option>
+    <option>Single</option>
+    <option>Twin</option>
+    <option>Triple</option>
+  </select>
+  <select>
+    <option>Sort by Rating</option>
+    <option>Lowest Price</option>
+    <option>Highest Rating</option>
+  </select>
+
+  <button class="btn btn-accent"><i data-lucide="filter"></i> Apply</button>
+</div>
+
+<section class="grid">
+
+  <div class="card">
+    <img src="{% static 'images/boys1.jpg' %}">
+    <div class="card-body">
+      <h3>Blue Haven PG</h3>
+      <p class="muted">Basavanagudi · 0.5 km</p>
+      <p>Twin Sharing · WiFi · Meals · Gym</p>
+      <div class="price">₹9,999 / month</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="{% static 'images/boys2.jpg' %}">
+    <div class="card-body">
+      <h3>Skyline Men’s Hostel</h3>
+      <p class="muted">Near Campus · 0.8 km</p>
+      <p>Single · Attached Bath · AC</p>
+      <div class="price">₹12,000 / month</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="{% static 'images/boys3.jpg' %}">
+    <div class="card-body">
+      <h3>Metro PG</h3>
+      <p class="muted">Jayanagar · 1.2 km</p>
+      <p>2/3 Sharing · Security · Laundry</p>
+      <div class="price">₹8,499 / month</div>
+    </div>
+  </div>
+
+</section>
+
+<footer>© 2025 UniStay • All Rights Reserved</footer>
+
+<script src="{% static 'js/boys.js' %}"></script>
+</body>
+</html>

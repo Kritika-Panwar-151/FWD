@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UniStay • Contact Us</title>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Main Theme CSS (boys.css) -->
+  <link rel="stylesheet" href="{% static 'css/boys.css' %}">
+
+  <!-- Contact Page CSS -->
+  <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="brand">
+        <i data-lucide="home" class="nav-icon"></i>
+        <h1>UniStay</h1>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="{% url 'home' %}" class="btn btn-ghost">Home</a>
+        <a href="{% url 'contact' %}" class="btn btn-ghost nav-active">Contact</a>
+
+        <div class="profile-wrapper">
+          <div class="profile-box" id="profileBtn">
+            <img src="{% static 'images/home_profile.png' %}" alt="User">
+          </div>
+
+          <div class="profile-menu" id="profileMenu">
+            <div class="profile-menu-header">
+              <div class="profile-menu-avatar">
+                <img src="{% static 'images/home_profile.png' %}">
+              </div>
+              <div class="profile-menu-user">
+                <div class="profile-menu-name">{{ user.first_name }}</div>
+                <div class="profile-menu-email">{{ user.email }}</div>
+              </div>
+            </div>
+
+            <div class="profile-menu-divider"></div>
+
+            <a href="{% url 'bookings' %}" class="profile-menu-item">
+              <i data-lucide="home"></i> <span>My Bookings</span>
+            </a>
+
+            <div class="profile-menu-divider"></div>
+
+            <a href="{% url 'logout' %}" class="profile-menu-item profile-menu-danger">
+              <i data-lucide="log-out"></i> <span>Logout</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Banner -->
+  <section class="intro-banner" style="min-height: 40vh;">
+    <div class="intro-content">
+      <h1>Contact UniStay</h1>
+      <p>We're always here to help with bookings, listings, or support.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <div class="contact-wrapper">
+    <h2 class="contact-title">Get in Touch</h2>
+    <p class="contact-desc">
+      Fill out the form or reach us through email or our BMSCE office.
+    </p>
+
+    <div class="contact-grid">
+
+      <!-- Form -->
+      <div>
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Email Address" required>
+          <input type="text" placeholder="Subject" required>
+          <textarea rows="6" placeholder="Your Message" required></textarea>
+
+          <button class="btn btn-accent">
+            <i data-lucide="send"></i> Send Message
+          </button>
+        </form>
+      </div>
+
+      <!-- Info -->
+      <div class="contact-info-box">
+        <h3>Our Location</h3>
+        <p><strong>Email:</strong> support@unistay.com</p>
+        <p><strong>Phone:</strong> +91 98765 43210</p>
+        <p><strong>Address:</strong> BMSCE Campus, Bangalore</p>
+
+        <iframe src="https://maps.google.com/maps?q=BMSCE&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact">
+    © 2025 UniStay • All Rights Reserved
+  </footer>
+
+  <!-- Contact JS -->
+  <script src="{% static 'js/contact.js' %}"></script>
+</body>
+</html>

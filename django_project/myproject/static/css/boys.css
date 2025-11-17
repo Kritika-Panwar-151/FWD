@@ -1,0 +1,432 @@
+:root {
+  --bg: linear-gradient(135deg, #0b1a3b, #08122a 50%, #001b4f 100%);
+  --primary: #2563eb;
+  --accent: #00bfff; /* bright blue */
+  --muted: #a3b3c2;
+  --text: #fff;
+  --card: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.15);
+  --glow: rgba(0, 191, 255, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 40, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+nav a {
+  text-decoration: none !important;
+}
+
+nav {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-icon {
+  height: 24px;
+  width: 24px;
+  color: var(--accent);
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;                /* NEW */
+  align-items: center;          /* NEW → vertical center */
+  justify-content: center;      /* NEW → horizontal center */
+  gap: 0.5rem;                  /* NEW → spacing between icon and text */
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-accent {
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 191, 255, 0.3);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.logo-img {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.icon-btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+.icon-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.profile-box {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+.profile-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* You already have .profile-box styles – keep them as they are */
+
+/* Dropdown panel */
+.profile-menu {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+
+  left: 50%;                /* Move anchor to middle */
+  transform: translateX(-50%) translateY(-6px);  
+  /* -50% centers it perfectly */
+
+  min-width: 230px;
+  background: rgba(9, 13, 35, 0.98);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+  padding: 0.75rem 0;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 150;
+}
+
+/* When dropdown opens */
+.profile-menu.is-open {
+  display: block;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);  /* Drop down cleanly */
+}
+
+
+/* Top part of the dropdown: avatar + name */
+.profile-menu-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem 0.75rem;
+}
+
+.profile-menu-avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+
+.profile-menu-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-menu-user {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-menu-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.profile-menu-email {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Divider line */
+.profile-menu-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0.35rem 0.85rem 0.35rem;
+}
+
+/* Buttons inside dropdown */
+.profile-menu-item {
+  width: 100%;
+  padding: 0.55rem 1rem;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+  color: var(--foreground);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.12s ease;
+}
+
+.profile-menu-item i {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+
+.profile-menu-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateX(2px);
+}
+
+.profile-menu-danger {
+  color: #f97373;
+}
+
+.profile-menu-danger i {
+  color: #f97373;
+}
+
+.profile-menu-danger:hover {
+  background: rgba(248, 113, 113, 0.12);
+}
+
+/* Hero Banner */
+.intro-banner {
+  width: 100%;
+  min-height: 60vh;
+  background: linear-gradient(145deg, #0d225a, #0b0f2c 60%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 0 40px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 1.2s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-banner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 60%);
+  pointer-events: none;
+}
+
+.intro-content {
+  max-width: 800px;
+  z-index: 2;
+  margin: 0 auto;         /* centers the entire block */
+  display: flex;          /* enables centering */
+  flex-direction: column; /* stack heading + text + button */
+  align-items: center;    /* center horizontally */
+  justify-content: center;
+  text-align: center;     /* centers text too */
+}
+
+
+.intro-content h1 {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, #a3e7ff, #80b3ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+}
+
+.intro-content p {
+  font-size: 1.15rem;
+  color: #c3d5ff;
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin: 20px auto 50px;
+  max-width: 1000px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.filter-bar input,
+.filter-bar select {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  padding: 10px 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.filter-bar input:focus,
+.filter-bar select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 6px var(--glow);
+}
+
+/* Hostel Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem 80px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 6px 30px rgba(0, 191, 255, 0.3);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 2px solid var(--accent);
+}
+
+.card-body {
+  padding: 1.3rem;
+}
+
+.card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.card .muted {
+  color: var(--muted);
+}
+
+.card .price {
+  font-size: 1.3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Footer */
+footer {
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 2rem;
+  color: var(--muted);
+  backdrop-filter: blur(10px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
