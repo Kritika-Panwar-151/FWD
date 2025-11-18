@@ -1,0 +1,56 @@
+{% load static %}
+
+<header class="site-header">
+  <nav class="site-nav">
+
+    <div class="brand">
+      <i data-lucide="home"></i>
+      <h1>UniStay</h1>
+    </div>
+
+    <div class="nav-buttons">
+
+      <a href="{% url 'home' %}" 
+         class="nav-link {% if active_page == 'home' %}nav-active{% endif %}">
+         Home
+      </a>
+
+      <a href="{% url 'contact' %}" 
+         class="nav-link {% if active_page == 'contact' %}nav-active{% endif %}">
+         Contact
+      </a>
+
+      <a href="{% url 'bookings' %}" class="btn-book-now">Book Now</a>
+
+      <div id="headerSearchBtn" class="search-btn">
+        <i data-lucide="search"></i>
+      </div>
+
+      <div class="profile-wrapper">
+        <div class="profile-box" id="profileBtn">
+          <img src="{% static 'images/home_profile.png' %}">
+        </div>
+
+        <div class="profile-menu" id="profileMenu">
+          <div class="profile-menu-header">
+            <div class="profile-menu-avatar">
+              <img src="{% static 'images/home_profile.png' %}">
+            </div>
+            <div>
+              <div class="profile-menu-name">{{ user.first_name }}</div>
+              <div class="profile-menu-email">{{ user.email }}</div>
+            </div>
+          </div>
+
+          <div class="profile-menu-divider"></div>
+
+          <a href="{% url 'logout' %}" class="profile-menu-item profile-menu-danger">
+            <i data-lucide="log-out"></i> Logout
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+</header>
+<script src="{% static 'js/header.js' %}"></script>

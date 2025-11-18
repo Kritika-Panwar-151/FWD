@@ -1,4 +1,8 @@
+
 {% load static %}
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,75 +14,15 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- CSS -->
+   <link rel="stylesheet" href="{% static 'css/header_1.css' %}">
   <link rel="stylesheet" href="{% static 'css/home_4.css' %}">
+  
 </head>
 
 <body>
+  
 
-  <!-- Header -->
-  <header>
-    <nav>
-      <div class="brand">
-        <i data-lucide="home" class="nav-icon"></i>
-        <h1>UniStay</h1>
-      </div>
-
-      <div class="nav-buttons">
-
-        <!-- Nav Links (scroll on same page) -->
-        <button class="btn btn-ghost nav-active" onclick="scrollToId('top')">Home</button>
-        <button class="btn btn-ghost" onclick="location.href='{% url 'contact' %}'">Contact</button>
-
-
-        <!-- Search icon -->
-        <div class="search-box" id="headerSearchBtn">
-          <i data-lucide="search"></i>
-        </div>
-
-        <!-- Profile + dropdown -->
-        <div class="profile-wrapper">
-          <div class="profile-box" id="profileBtn">
-            <img src="{% static 'images/home_profile.png' %}" alt="User">
-          </div>
-
-          <!-- Dropdown menu -->
-          <div class="profile-menu" id="profileMenu">
-            <div class="profile-menu-header">
-              <div class="profile-menu-avatar">
-                <img src="{% static 'images/home_profile.png' %}" alt="User">
-              </div>
-              <div class="profile-menu-user">
-                <div class="profile-menu-name">
-                  {{ user.first_name|default:"Student" }}
-                </div>
-                <div class="profile-menu-email">
-                  {{ user.email|default:"student@bmsce.ac.in" }}
-                </div>
-              </div>
-            </div>
-
-            <div class="profile-menu-divider"></div>
-
-            <!-- My Bookings (Django URL) -->
-            <a href="{% url 'bookings' %}" class="profile-menu-item">
-              <i data-lucide="home"></i>
-              <span>My Bookings</span>
-            </a>
-
-            <div class="profile-menu-divider"></div>
-
-            <!-- Logout (Django URL) -->
-            <a href="{% url 'logout' %}" class="profile-menu-item profile-menu-danger">
-              <i data-lucide="log-out"></i>
-              <span>Logout</span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </nav>
-  </header>
-
+  {% include 'partials/header.html' with active_page='home' %}
   <!-- Top anchor (for Home scroll) -->
   <div id="top"></div>
 
@@ -220,7 +164,9 @@
     </div>
   </section>
 
+  
   <!-- Footer -->
+   <!--
   <footer id="contact">
     <div class="container">
       <div class="cols">
@@ -259,8 +205,18 @@
       <div class="footline">&copy; 2025 UniStay. All rights reserved.</div>
     </div>
   </footer>
+-->
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footline">&copy; 2025 UniStay. All rights reserved.</div>
+    </div>
+  </footer>
 
   <!-- JS -->
+  <script src="{% static 'js/header.js' %}"></script>
   <script src="{% static 'js/home_4.js' %}"></script>
+  
+
 </body>
 </html>

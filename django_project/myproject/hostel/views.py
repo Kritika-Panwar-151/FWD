@@ -15,7 +15,7 @@ def login_signup(request):
             if User.objects.filter(username=email).exists():
                 messages.error(request, "User already exists. Please log in.", extra_tags='signup')
             else:
-                user = User.create_user(
+                user = User.objects.create_user(
                     username=email, email=email, password=password, first_name=name
                 )
                 user.save()

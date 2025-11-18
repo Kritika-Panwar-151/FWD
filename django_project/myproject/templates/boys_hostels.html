@@ -1,127 +1,95 @@
+
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>UniStay • Boys Hostels</title>
+    <title>UniStay • Boys Hostels</title>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="{% static 'css/boys.css' %}">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/header_1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/boys.css' %}">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
 
-<header>
-  <nav>
-    <div class="brand">
-      <i data-lucide="home" class="nav-icon"></i>
-      <h1>UniStay</h1>
+    {% include 'partials/header.html' with active_page='boys' %}
+
+    <!-- ---------------------- BANNER ---------------------- -->
+    <section class="intro-banner">
+        <div class="intro-content">
+            <h1>Find Your Perfect Boy's Hostel Near BMSCE</h1>
+            <p>Verified, safe, and budget-friendly living for BMSCE boys</p>
+            <button class="btn btn-accent" onclick="scrollToId('boysHostels')">
+              <i data-lucide="search"></i> Start Exploring
+            </button>
+        </div>
+    </section>
+
+    <!-- ---------------------- FILTER BAR ---------------------- -->
+     <!--
+    <div class="filter-bar">
+        <input type="text" placeholder="Search hostels..." />
+        <select>
+            <option>Sharing Type</option>
+            <option>Single</option>
+            <option>Twin</option>
+            <option>Triple</option>
+        </select>
+        <select>
+            <option>Sort by Rating</option>
+            <option>Lowest Price</option>
+            <option>Highest Rating</option>
+        </select>
+        <button class="btn btn-accent"><i data-lucide="filter"></i> Apply</button>
     </div>
+  -->
+    <!-- ---------------------- HOSTELS ---------------------- -->
+    <section id="boysHostels" class="grid">
 
-    <div class="nav-buttons">
-
-      <a href="{% url 'home' %}" class="btn btn-ghost">Home</a>
-      <button class="btn btn-ghost">Contact</button>
-
-      <div class="profile-wrapper">
-        <div class="profile-box" id="profileBtn">
-          <img src="{% static 'images/home_profile.png' %}">
+        <div class="card">
+            <img src="{% static 'images/boys_hostel1.jpeg' %}">
+            <div class="card-body">
+                <h3>Blue Haven PG</h3>
+                <p class="muted">Basavanagudi · 0.5 km</p>
+                <p>Twin Sharing · WiFi · Meals · Gym</p>
+                <div class="price">₹9,999 / month</div>
+            </div>
         </div>
 
-        <div class="profile-menu" id="profileMenu">
-
-          <div class="profile-menu-header">
-            <div class="profile-menu-avatar">
-              <img src="{% static 'images/home_profile.png' %}">
+        <div class="card">
+            <img src="{% static 'images/boys_hostel2.jpeg' %}">
+            <div class="card-body">
+                <h3>Skyline Men’s Hostel</h3>
+                <p class="muted">Near Campus · 0.8 km</p>
+                <p>Single · Attached Bath · AC</p>
+                <div class="price">₹12,000 / month</div>
             </div>
-            <div class="profile-menu-user">
-              <div class="profile-menu-name">{{ user.first_name }}</div>
-              <div class="profile-menu-email">{{ user.email }}</div>
-            </div>
-          </div>
-
-          <div class="profile-menu-divider"></div>
-
-          <a href="{% url 'bookings' %}" class="profile-menu-item">
-            <i data-lucide="home"></i> <span>My Bookings</span>
-          </a>
-
-          <div class="profile-menu-divider"></div>
-
-          <a href="{% url 'logout' %}" class="profile-menu-item profile-menu-danger">
-            <i data-lucide="log-out"></i> <span>Logout</span>
-          </a>
-
         </div>
-      </div>
 
-    </div>
-  </nav>
-</header>
+        <div class="card">
+            <img src="{% static 'images/boys_hostel3.jpeg' %}">
+            <div class="card-body">
+                <h3>Metro PG</h3>
+                <p class="muted">Jayanagar · 1.2 km</p>
+                <p>2/3 Sharing · Security · Laundry</p>
+                <div class="price">₹8,499 / month</div>
+            </div>
+        </div>
 
-<section class="intro-banner">
-  <div class="intro-content">
-    <h1>Find Your Perfect Boy's Hostel Near BMSCE</h1>
-    <p>Verified, safe, and budget-friendly living for BMSCE boys</p>
-    <button class="btn btn-accent"><i data-lucide="search"></i> Start Exploring</button>
-  </div>
-</section>
+    </section>
 
-<div class="filter-bar">
-  <input type="text" placeholder="Search hostels..." />
-  <select>
-    <option>Sharing Type</option>
-    <option>Single</option>
-    <option>Twin</option>
-    <option>Triple</option>
-  </select>
-  <select>
-    <option>Sort by Rating</option>
-    <option>Lowest Price</option>
-    <option>Highest Rating</option>
-  </select>
+    <footer>© 2025 UniStay • All Rights Reserved</footer>
 
-  <button class="btn btn-accent"><i data-lucide="filter"></i> Apply</button>
-</div>
+    <!-- JS LAST -->
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/boys.js' %}"></script>
 
-<section class="grid">
-
-  <div class="card">
-    <img src="{% static 'images/boys1.jpg' %}">
-    <div class="card-body">
-      <h3>Blue Haven PG</h3>
-      <p class="muted">Basavanagudi · 0.5 km</p>
-      <p>Twin Sharing · WiFi · Meals · Gym</p>
-      <div class="price">₹9,999 / month</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="{% static 'images/boys2.jpg' %}">
-    <div class="card-body">
-      <h3>Skyline Men’s Hostel</h3>
-      <p class="muted">Near Campus · 0.8 km</p>
-      <p>Single · Attached Bath · AC</p>
-      <div class="price">₹12,000 / month</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="{% static 'images/boys3.jpg' %}">
-    <div class="card-body">
-      <h3>Metro PG</h3>
-      <p class="muted">Jayanagar · 1.2 km</p>
-      <p>2/3 Sharing · Security · Laundry</p>
-      <div class="price">₹8,499 / month</div>
-    </div>
-  </div>
-
-</section>
-
-<footer>© 2025 UniStay • All Rights Reserved</footer>
-
-<script src="{% static 'js/boys.js' %}"></script>
 </body>
 </html>
