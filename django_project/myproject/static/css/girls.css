@@ -78,10 +78,10 @@ nav {
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
-  display: flex;                /* NEW */
-  align-items: center;          /* NEW → vertical center */
-  justify-content: center;      /* NEW → horizontal center */
-  gap: 0.5rem;                  /* NEW → spacing between icon and text */
+  display: flex;                
+  align-items: center;          
+  justify-content: center;      
+  gap: 0.5rem;                  
 }
 
 .btn:hover {
@@ -152,7 +152,7 @@ nav {
   align-items: center;
 }
 
-/* You already have .profile-box styles – keep them as they are */
+
 
 /* Dropdown panel */
 .profile-menu {

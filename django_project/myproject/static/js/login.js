@@ -56,7 +56,7 @@ function handleSwipe() {
   }
 }
 
-// ✅ Password Strength Validation
+//Password Strength Validation
 const signupPassword = document.getElementById("signupPassword");
 const passwordFeedback = document.getElementById("passwordFeedback");
 const signupBtn = document.getElementById("signupBtn");

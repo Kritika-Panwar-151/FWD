@@ -1,8 +1,6 @@
-/* =========================================
-   ROOT VARIABLES & BASE THEME
-========================================= */
+
 html, body {
-  background: #0b0f2c;  /* same as your dark theme */
+  background: #0b0f2c;  
 }
 :root {
   --background: #0b0f2c;

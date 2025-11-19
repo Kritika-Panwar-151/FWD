@@ -1,6 +1,4 @@
-/* =========================================
-   ROOT THEME (same as home page)
-========================================= */
+
 :root {
   --background: #0b0f2c;
   --foreground: #ffffff;
@@ -247,8 +245,8 @@ nav a {
 .intro-content h1 {
   font-size: 3rem;
   font-weight: 800;
-  color: #ffffff !important;       /* PURE WHITE */
-  background: none !important;     /* remove gradient text */
+  color: #ffffff !important;       
+  background: none !important;    
 }
 
 .intro-content p {
@@ -272,8 +270,8 @@ nav a {
   font-size: 2.4rem;
   font-weight: 800;
   text-align: center;
-  color: #ffffff !important;        /* PURE WHITE */
-  background: none !important;      /* remove gradient */
+  color: #ffffff !important;       
+  background: none !important;      
 }
 
 .contact-desc {

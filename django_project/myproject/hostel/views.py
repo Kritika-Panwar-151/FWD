@@ -37,7 +37,7 @@ def login_signup(request):
     return render(request, 'login.html')
 
 
-# ⭐ ONLY CHANGE IS HERE ⭐
+
 @login_required(login_url='/')
 def home(request):
     return render(request, 'home.html')

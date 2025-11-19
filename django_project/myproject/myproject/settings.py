@@ -206,10 +206,10 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hostelgo_db',       # your database name
-        'USER': 'project',              # your MySQL username
-        'PASSWORD': 'project',              # your MySQL password (if any)
-        'HOST': '127.0.0.1',         # or 'localhost'
+        'NAME': 'hostelgo_db',       # database name
+        'USER': 'project',              # MySQL username
+        'PASSWORD': 'project',              # MySQL password (if any)
+        'HOST': '127.0.0.1',         # localhost'
         'PORT': '3306',              # default MySQL port
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
