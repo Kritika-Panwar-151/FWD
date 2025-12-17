@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from .models import Profile
+
+from django.shortcuts import redirect
+from django.contrib.auth import logout
 
 def login_signup(request):
     if request.method == 'POST':
@@ -11,12 +15,17 @@ def login_signup(request):
             name = request.POST.get('fullname')
             email = request.POST.get('email')
             password = request.POST.get('password')
+            gender = request.POST.get('gender')  # NEW
 
             if User.objects.filter(username=email).exists():
                 messages.error(request, "User already exists. Please log in.", extra_tags='signup')
             else:
                 user = User.objects.create_user(
                     username=email, email=email, password=password, first_name=name
+                )
+                Profile.objects.create(
+                user=user,
+                gender=gender
                 )
                 user.save()
                 messages.success(request, "Signup successful! Please log in.", extra_tags='signup')
@@ -40,12 +49,18 @@ def login_signup(request):
 
 @login_required(login_url='/')
 def home(request):
-    return render(request, 'home.html')
+    gender = request.user.profile.gender  # get gender
+
+    context = {
+        'gender': gender
+    }
+    return render(request, 'home.html', context)
+
 
 
 def custom_logout(request):
     logout(request)
-    return render(request, "logged_out.html")
+    return redirect('login_page')
 
 @login_required
 def bookings(request):

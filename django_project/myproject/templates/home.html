@@ -1,7 +1,4 @@
-
 {% load static %}
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,16 +11,15 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- CSS -->
-   <link rel="stylesheet" href="{% static 'css/header_1.css' %}">
+  <link rel="stylesheet" href="{% static 'css/header_1.css' %}">
   <link rel="stylesheet" href="{% static 'css/home_4.css' %}">
-  
 </head>
 
 <body>
-  
 
   {% include 'partials/header.html' with active_page='home' %}
-  <!-- Top anchor (for Home scroll) -->
+
+  <!-- Top anchor -->
   <div id="top"></div>
 
   <!-- Hero -->
@@ -39,30 +35,33 @@
           <button id="searchHostelBtn" class="btn btn-hero animate-pulse">
             <i data-lucide="search"></i> Search Hostels
           </button>
-
           <button class="btn btn-outline" onclick="scrollToId('about')">Learn More</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Hostel Choice -->
+  <!-- Hostel Choice (GENDER BASED DISPLAY) -->
   <section class="hostel-choice-section" id="chooseHostel">
     <h2 class="hostel-choice-heading">Choose Your Hostel</h2>
 
     <div class="hostel-choice-container">
 
-      <!-- Girls Hostel -->
-      <div class="hostel-choice-card girls-card" onclick="location.href='{% url 'girls_hostels' %}'">
+      {% if gender == 'F' %}
+        <!-- Girls Hostel -->
+        <div class="hostel-choice-card girls-card"
+             onclick="location.href='{% url 'girls_hostels' %}'">
+          <h3 class="hostel-choice-title">Girl's Hostel</h3>
+        </div>
+      {% endif %}
 
-        <h3 class="hostel-choice-title">Girl's Hostel</h3>
-      </div>
-
-      <!-- Boys Hostel -->
-      <div class="hostel-choice-card boys-card" onclick="location.href='{% url 'boys_hostels' %}'">
-
-        <h3 class="hostel-choice-title">Boy's Hostel</h3>
-      </div>
+      {% if gender == 'M' %}
+        <!-- Boys Hostel -->
+        <div class="hostel-choice-card boys-card"
+             onclick="location.href='{% url 'boys_hostels' %}'">
+          <h3 class="hostel-choice-title">Boy's Hostel</h3>
+        </div>
+      {% endif %}
 
     </div>
   </section>
@@ -104,109 +103,59 @@
         <div>
           <h2 style="font-size:2rem;margin:0 0 1rem">Made for BMSCE Students</h2>
           <div style="display:grid;gap:1rem">
+
             <div style="display:flex;gap:.75rem;align-items:flex-start">
               <i data-lucide="check-circle"
-                 style="height:24px;width:24px;color:var(--primary);flex:0 0 auto;margin-top:.15rem"></i>
+                 style="height:24px;width:24px;color:var(--primary)"></i>
               <div>
-                <h3 style="margin:.1rem 0 .25rem">Student-Friendly Pricing</h3>
-                <p class="muted">
-                  Affordable options that fit your budget without compromising on quality
-                </p>
+                <h3>Student-Friendly Pricing</h3>
+                <p class="muted">Affordable options without compromising quality</p>
               </div>
             </div>
+
             <div style="display:flex;gap:.75rem;align-items:flex-start">
               <i data-lucide="check-circle"
-                 style="height:24px;width:24px;color:var(--primary);flex:0 0 auto;margin-top:.15rem"></i>
+                 style="height:24px;width:24px;color:var(--primary)"></i>
               <div>
-                <h3 style="margin:.1rem 0 .25rem">24/7 Support</h3>
-                <p class="muted">Always here to help with any questions or concerns about your booking</p>
+                <h3>24/7 Support</h3>
+                <p class="muted">Always here to help</p>
               </div>
             </div>
+
             <div style="display:flex;gap:.75rem;align-items:flex-start">
               <i data-lucide="check-circle"
-                 style="height:24px;width:24px;color:var(--primary);flex:0 0 auto;margin-top:.15rem"></i>
+                 style="height:24px;width:24px;color:var(--primary)"></i>
               <div>
-                <h3 style="margin:.1rem 0 .25rem">Flexible Terms</h3>
-                <p class="muted">Semester-based and monthly options to suit your academic schedule</p>
+                <h3>Flexible Terms</h3>
+                <p class="muted">Semester & monthly options</p>
               </div>
             </div>
+
             <div style="display:flex;gap:.75rem;align-items:flex-start">
               <i data-lucide="check-circle"
-                 style="height:24px;width:24px;color:var(--primary);flex:0 0 auto;margin-top:.15rem"></i>
+                 style="height:24px;width:24px;color:var(--primary)"></i>
               <div>
-                <h3 style="margin:.1rem 0 .25rem">Community Reviews</h3>
-                <p class="muted">Real feedback from BMSCE students who've stayed there</p>
+                <h3>Community Reviews</h3>
+                <p class="muted">Real student feedback</p>
               </div>
             </div>
+
           </div>
         </div>
 
         <div class="counter">
           <div>
             <div class="big">500+</div>
-            <div class="muted" style="font-size:1.1rem">Happy Students</div>
+            <div class="muted">Happy Students</div>
             <div class="big big-accent" style="margin-top:1.5rem">50+</div>
-            <div class="muted" style="font-size:1.1rem">Verified Hostels</div>
+            <div class="muted">Verified Hostels</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container">
-      <h2>Ready to Find Your Home?</h2>
-      <p>Join hundreds of BMSCE students who've found their perfect accommodation through UniStay</p>
-      <button id="searchHostelBtn2" class="btn btn-hero animate-pulse">
-        <i data-lucide="search"></i> Start Your Search
-      </button>
-    </div>
-  </section>
-
-  
   <!-- Footer -->
-   <!--
-  <footer id="contact">
-    <div class="container">
-      <div class="cols">
-        <div>
-          <div class="brand" style="margin-bottom:.75rem">
-            <i data-lucide="home" style="height:24px;width:24px;color:var(--primary)"></i>
-            <h3 style="margin:0;font-size:1.25rem;color:var(--foreground)">UniStay</h3>
-          </div>
-          <p class="muted">Making hostel booking easy for BMSCE students</p>
-        </div>
-        <div>
-          <h4 style="margin:0 0 .75rem">Quick Links</h4>
-          <ul style="list-style:none;padding:0;margin:0;display:grid;gap:.5rem" class="muted">
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#chooseHostel">Search Hostels</a></li>
-            <li><a href="#">List Your Hostel</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 style="margin:0 0 .75rem">Support</h4>
-          <ul style="list-style:none;padding:0;margin:0;display:grid;gap:.5rem" class="muted">
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-            <li><a href="#">Terms of Service</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 style="margin:0 0 .75rem">Contact</h4>
-          <ul style="list-style:none;padding:0;margin:0;display:grid;gap:.5rem" class="muted">
-            <li>BMSCE Campus</li>
-            <li>Bangalore, India</li>
-            <li>support@unistay.com</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footline">&copy; 2025 UniStay. All rights reserved.</div>
-    </div>
-  </footer>
--->
-
   <footer id="contact">
     <div class="container">
       <div class="footline">&copy; 2025 UniStay. All rights reserved.</div>
@@ -216,7 +165,6 @@
   <!-- JS -->
   <script src="{% static 'js/header.js' %}"></script>
   <script src="{% static 'js/home_4.js' %}"></script>
-  
 
 </body>
 </html>
