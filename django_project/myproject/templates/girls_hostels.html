@@ -11,11 +11,11 @@
   <!-- CSS -->
   <link rel="stylesheet" href="{% static 'css/header_1.css' %}">
   <link rel="stylesheet" href="{% static 'css/girls.css' %}">
-  
+
   <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-
 </head>
+
 <body>
 
   {% include 'partials/header.html' with active_page='girls' %}
@@ -27,7 +27,7 @@
       <h1>Find Your Perfect Girl's Hostel Near BMSCE</h1>
       <p>Safe, comfortable, and student-friendly accommodations.</p>
       <button class="btn btn-accent" onclick="scrollToId('girlsHostels')">
-         <i data-lucide="search"></i> Start Exploring
+        <i data-lucide="search"></i> Start Exploring
       </button>
     </div>
   </section>
@@ -35,18 +35,21 @@
   <!-- ------------------ HOSTEL LIST ------------------ -->
   <section id="girlsHostels" class="grid">
 
-    <!-- CARD 1 -->
-    <div class="card">
-      <img src="{% static 'images/girls_hostel1.jpeg' %}">
-      <div class="card-body">
-        <h3>Pink Petals PG</h3>
-        <p class="muted">Basavanagudi · 0.4 km</p>
-        <p>2/3 Sharing · Meals · WiFi · AC</p>
-        <div class="price">₹10,999 / month</div>
-      </div>
+    <!-- CARD 1 : CLICKABLE -->
+    <a href="{% url 'hostel_detail' 'pink-petals' %}" class="card-link">
+  <div class="card">
+    <img src="{% static 'images/girls_hostel1.jpeg' %}">
+    <div class="card-body">
+      <h3>Pink Petals PG</h3>
+      <p class="muted">Basavanagudi · 0.4 km</p>
+      <p>2/3 Sharing · Meals · WiFi · AC</p>
+      <div class="price">₹10,999 / month</div>
     </div>
+  </div>
+</a>
 
-    <!-- CARD 2 -->
+<!--
+
     <div class="card">
       <img src="{% static 'images/girls_hostel2.jpeg' %}">
       <div class="card-body">
@@ -57,7 +60,6 @@
       </div>
     </div>
 
-    <!-- CARD 3 -->
     <div class="card">
       <img src="{% static 'images/girls_hostel3.jpeg' %}">
       <div class="card-body">
@@ -68,7 +70,6 @@
       </div>
     </div>
 
-    <!-- CARD 4 (NO IMAGE) -->
     <div class="card">
       <div class="card-body">
         <h3>Coming Soon Girls Hostel</h3>
@@ -78,7 +79,7 @@
       </div>
     </div>
 
-    <!-- CARD 5 (NO IMAGE) -->
+    
     <div class="card">
       <div class="card-body">
         <h3>Upcoming Ladies PG</h3>
@@ -89,6 +90,7 @@
     </div>
 
   </section>
+-->
 
   <!-- ------------------ FOOTER ------------------ -->
   <footer>© 2025 UniStay • All Rights Reserved</footer>

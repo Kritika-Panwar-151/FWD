@@ -432,3 +432,36 @@ footer {
     transform: translateY(0);
   }
 }
+/* =========================================
+   CLICKABLE HOSTEL CARDS
+========================================= */
+
+/* Remove default anchor styles */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Ensure hover effect still applies */
+.card-link .card {
+  height: 100%;
+}
+
+/* Pointer cursor for better UX */
+.card-link:hover {
+  cursor: pointer;
+}
+
+/* Prevent image drag highlight */
+.card img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Optional: slightly stronger hover for clickable feel */
+.card-link:hover .card {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 35px rgba(255, 105, 180, 0.35);
+}
