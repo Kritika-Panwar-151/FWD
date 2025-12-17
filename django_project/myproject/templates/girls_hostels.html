@@ -31,27 +31,11 @@
       </button>
     </div>
   </section>
-  <!--
-  <div class="filter-bar">
-    <input type="text" placeholder="Search hostels..." />
-    <select>
-      <option>Sharing Type</option>
-      <option>Single</option>
-      <option>Twin</option>
-      <option>Triple</option>
-    </select>
-    <select>
-      <option>Sort by Rating</option>
-      <option>Lowest Price</option>
-      <option>Highest Rating</option>
-    </select>
 
-    <button class="btn btn-accent"><i data-lucide="filter"></i> Apply</button>
-  </div>
--->
+  <!-- ------------------ HOSTEL LIST ------------------ -->
   <section id="girlsHostels" class="grid">
 
-
+    <!-- CARD 1 -->
     <div class="card">
       <img src="{% static 'images/girls_hostel1.jpeg' %}">
       <div class="card-body">
@@ -62,6 +46,7 @@
       </div>
     </div>
 
+    <!-- CARD 2 -->
     <div class="card">
       <img src="{% static 'images/girls_hostel2.jpeg' %}">
       <div class="card-body">
@@ -72,6 +57,7 @@
       </div>
     </div>
 
+    <!-- CARD 3 -->
     <div class="card">
       <img src="{% static 'images/girls_hostel3.jpeg' %}">
       <div class="card-body">
@@ -82,10 +68,32 @@
       </div>
     </div>
 
+    <!-- CARD 4 (NO IMAGE) -->
+    <div class="card">
+      <div class="card-body">
+        <h3>Coming Soon Girls Hostel</h3>
+        <p class="muted">Location TBD</p>
+        <p>Details will be updated soon</p>
+        <div class="price">—</div>
+      </div>
+    </div>
+
+    <!-- CARD 5 (NO IMAGE) -->
+    <div class="card">
+      <div class="card-body">
+        <h3>Upcoming Ladies PG</h3>
+        <p class="muted">Near BMSCE</p>
+        <p>Facilities to be announced</p>
+        <div class="price">—</div>
+      </div>
+    </div>
+
   </section>
 
+  <!-- ------------------ FOOTER ------------------ -->
   <footer>© 2025 UniStay • All Rights Reserved</footer>
 
+  <!-- JS -->
   <script src="{% static 'js/header.js' %}"></script>
   <script src="{% static 'js/girls.js' %}"></script>
 
