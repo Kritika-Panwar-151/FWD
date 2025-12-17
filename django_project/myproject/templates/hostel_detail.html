@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>UniStay • {{ hostel.name }}</title>
+
+  <!-- SAME HEADER + THEME -->
+  <link rel="stylesheet" href="{% static 'css/header_1.css' %}">
+  <link rel="stylesheet" href="{% static 'css/girls.css' %}">
+  <link rel="stylesheet" href="{% static 'css/hostel_detail.css' %}">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+{% include 'partials/header.html' %}
+
+<!-- HERO IMAGE WITH PINK BORDER -->
+<section class="hostel-hero">
+  <img src="{% static hostel.image %}" class="pink-border">
+  <div class="hero-overlay">
+    <h1>{{ hostel.name }}</h1>
+    <p>{{ hostel.distance }}</p>
+  </div>
+</section>
+
+<section class="hostel-content">
+
+  <div class="info-card">
+    <h2>Facilities</h2>
+    <ul class="facility-list">
+      {% for f in hostel.facilities %}
+        <li>✔ {{ f }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="info-card">
+    <h2>Warden Details</h2>
+    <p><strong>Name:</strong> {{ hostel.warden.name }}</p>
+    <p><strong>Contact:</strong> {{ hostel.warden.phone }}</p>
+  </div>
+
+  <div class="info-card">
+    <h2>Location</h2>
+    <div class="map-wrapper" onclick="openMap()">
+      <iframe src="{{ hostel.map }}" loading="lazy"></iframe>
+    </div>
+  </div>
+
+</section>
+
+<footer>© 2025 UniStay • All Rights Reserved</footer>
+
+<script src="{% static 'js/hostel_detail.js' %}"></script>
+</body>
+</html>
