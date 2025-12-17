@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const authBox = document.getElementById("authBox");
 const goSignup = document.getElementById("goSignup");
 const goLogin = document.getElementById("goLogin");
@@ -80,3 +81,6 @@ signupPassword.addEventListener("input", () => {
 
 
 //hiii
+=======
+ 
+>>>>>>> fb17c831173296666a9a4d46ab1dc513ae679151
