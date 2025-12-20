@@ -1,0 +1,116 @@
+/* ================= BOOKING WRAPPER ================= */
+.booking-wrapper {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 2.5rem;
+  background: rgba(255,255,255,0.06);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+}
+
+.booking-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: .5rem;
+}
+
+.booking-desc {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+}
+
+/* ================= FORM GRID ================= */
+.booking-form input,
+.booking-form select,
+
+.booking-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.booking-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+/* textarea full width */
+.booking-grid textarea {
+  grid-column: 1 / -1;
+  resize: none;
+}
+
+/* ================= BUTTON ================= */
+.booking-btn {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .booking-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================================
+   UNIFY TEXT COLOR FOR ALL FIELDS
+================================ */
+
+/* Default (placeholder / unselected) */
+.booking-form input,
+.booking-form select {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.45); /* muted like name field */
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 14px;
+}
+
+/* Placeholder text for inputs */
+.booking-form input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* When user types or selects a value */
+.booking-form input:not(:placeholder-shown),
+.booking-form select:valid {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Native select fixes */
+.booking-form select {
+  border-radius: 18px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color-scheme: dark;
+}
+
+/* Dropdown list */
+.booking-form select option {
+  border-radius: 18px;
+  background-color: rgba(11, 15, 44, 0.98);
+  color: rgba(255,255,255,0.8);
+}
+
+/* Disabled placeholder option */
+.booking-form select option[disabled] {
+  color: rgba(255,255,255,0.45);
+}
+
+
