@@ -38,7 +38,7 @@
         Fill in your details below. Our team will contact you to confirm availability.
     </p>
 
-    <form method="post" class="booking-form">
+    <form method="post" class="booking-form" id="bookingForm">
         {% csrf_token %}
 
         <div class="booking-grid">
@@ -54,7 +54,7 @@
         <option value="girls">Girls Hostel</option>
     </select>
 
-    <select name="year" required>
+    <select name="Year" required>
         <option value="" disabled selected>Select Year of Study</option>
         <option value="1">1st Year</option>
         <option value="2">2nd Year</option>
@@ -63,21 +63,21 @@
     </select>
 
     <!-- Preference Order -->
-    <select name="pref_1" required>
+    <select name="preference1" required>
         <option value="" disabled selected>Preference 1 (Most Preferred Hostel)</option>
         <option value="blue_haven">Blue Haven PG</option>
         <option value="skyline">Skyline Men’s Hostel</option>
         <option value="metro_pg">Metro PG</option>
     </select>
 
-    <select name="pref_2" required> 
+    <select name="preference2" required> 
         <option value="" disabled selected>Preference 2</option>
         <option value="blue_haven">Blue Haven PG</option>
         <option value="skyline">Skyline Men’s Hostel</option>
         <option value="metro_pg">Metro PG</option>
     </select>
 
-    <select name="pref_3" required>
+    <select name="preference3" required>
         <option value="" disabled selected>Preference 3</option>
         <option value="blue_haven">Blue Haven PG</option>
         <option value="skyline">Skyline Men’s Hostel</option>
@@ -95,6 +95,31 @@
         </div>
 
     </form>
+
+    <!-- ================= BOOKING SUCCESS ================= -->
+<section class="booking-success" id="bookingSuccess" style="display:none;">
+
+  <div class="success-card">
+    <h2>✅ Booking Submitted Successfully</h2>
+    <p class="success-text">
+      Thank you for choosing <strong>UniStay</strong>.  
+      Our team will contact you shortly to confirm availability.
+    </p>
+
+    <div class="success-details">
+      <div><span>Name:</span> <strong id="s-name"></strong></div>
+      <div><span>Email:</span> <strong id="s-email"></strong></div>
+      <div><span>Phone:</span> <strong id="s-phone"></strong></div>
+      <div><span>Hostel Type:</span> <strong id="s-hostel"></strong></div>
+      <div><span>Year:</span> <strong id="s-year"></strong></div>
+      <div><span>Preference 1:</span> <strong id="s-pref1"></strong></div>
+      <div><span>Preference 2:</span> <strong id="s-pref2"></strong></div>
+      <div><span>Preference 3:</span> <strong id="s-pref3"></strong></div>
+    </div>
+  </div>
+
+</section>
+
 
 </section>
 
