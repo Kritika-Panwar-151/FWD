@@ -1,31 +1,106 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Bookings</title>
-    <style>
-        body {
-            background: #0b0f2c;
-            color: white;
-            font-family: Poppins, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .box {
-            background: rgba(255, 255, 255, 0.06);
-            padding: 2rem 3rem;
-            border-radius: 1rem;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.15);
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>UniStay • Booking</title>
+
+    <!-- SAME HEADER CSS -->
+    <link rel="stylesheet" href="{% static 'css/header_1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/boys.css' %}">
+
+    <!-- BOOKING ONLY CSS -->
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
-    <div class="box">
-        <h2>My Bookings</h2>
-        <p>No bookings yet.</p>
+
+{% include 'partials/header.html' with active_page='bookings' %}
+
+<!-- ================= BANNER ================= -->
+<section class="intro-banner">
+    <div class="intro-content">
+        <h1>Book Your Hostel</h1>
+        <p>Submit your preferences and secure your stay near BMSCE</p>
     </div>
+</section>
+
+<!-- ================= BOOKING FORM ================= -->
+<section class="booking-wrapper">
+
+    <h2 class="booking-title">Hostel Booking Form</h2>
+    <p class="booking-desc">
+        Fill in your details below. Our team will contact you to confirm availability.
+    </p>
+
+    <form method="post" class="booking-form">
+        {% csrf_token %}
+
+        <div class="booking-grid">
+
+    <!-- Basic Details -->
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="College Email Address" required>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+
+    <select name="hostel_type" required>
+        <option value="" disabled selected>Select Hostel Type</option>
+        <option value="boys">Boys Hostel</option>
+        <option value="girls">Girls Hostel</option>
+    </select>
+
+    <select name="year" required>
+        <option value="" disabled selected>Select Year of Study</option>
+        <option value="1">1st Year</option>
+        <option value="2">2nd Year</option>
+        <option value="3">3rd Year</option>
+        <option value="4">4th Year</option>
+    </select>
+
+    <!-- Preference Order -->
+    <select name="pref_1" required>
+        <option value="" disabled selected>Preference 1 (Most Preferred Hostel)</option>
+        <option value="blue_haven">Blue Haven PG</option>
+        <option value="skyline">Skyline Men’s Hostel</option>
+        <option value="metro_pg">Metro PG</option>
+    </select>
+
+    <select name="pref_2" required> 
+        <option value="" disabled selected>Preference 2</option>
+        <option value="blue_haven">Blue Haven PG</option>
+        <option value="skyline">Skyline Men’s Hostel</option>
+        <option value="metro_pg">Metro PG</option>
+    </select>
+
+    <select name="pref_3" required>
+        <option value="" disabled selected>Preference 3</option>
+        <option value="blue_haven">Blue Haven PG</option>
+        <option value="skyline">Skyline Men’s Hostel</option>
+        <option value="metro_pg">Metro PG</option>
+    </select>
+
+</div>
+
+
+        <div class="booking-btn">
+            <button type="submit" class="btn btn-accent">
+                <i data-lucide="check-circle"></i>
+                Submit Booking
+            </button>
+        </div>
+
+    </form>
+
+</section>
+
+<footer>© 2025 UniStay • All Rights Reserved</footer>
+
+<script src="{% static 'js/booking.js' %}"></script>
+
 </body>
 </html>
