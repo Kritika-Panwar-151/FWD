@@ -18,38 +18,55 @@
 {% include 'partials/header.html' %}
 
 <!-- HERO IMAGE WITH PINK BORDER -->
-<section class="hostel-hero">
-  <img src="{% static hostel.image %}" class="pink-border">
-  <div class="hero-overlay">
-    <h1>{{ hostel.name }}</h1>
-    <p>{{ hostel.distance }}</p>
+<section class="gallery-container">
+  <div class="gallery-grid">
+    {% for img_path in hostel.images %}
+      <div class="gallery-item item-{{ forloop.counter }}">
+        <img src="{% static img_path %}" alt="Hostel Image">
+      </div>
+    {% endfor %}
   </div>
 </section>
 
 <section class="hostel-content">
-
-  <div class="info-card">
-    <h2>Facilities</h2>
-    <ul class="facility-list">
-      {% for f in hostel.facilities %}
-        <li>✔ {{ f }}</li>
-      {% endfor %}
-    </ul>
+  <div class="hostel-title-area">
+    <h1 class="elegant-title">{{ hostel.name }}</h1>
+    <p class="distance-tag">
+       <i data-lucide="map-pin"></i> {{ hostel.distance }}
+    </p>
   </div>
 
-  <div class="info-card">
-    <h2>Warden Details</h2>
-    <p><strong>Name:</strong> {{ hostel.warden.name }}</p>
-    <p><strong>Contact:</strong> {{ hostel.warden.phone }}</p>
+  <div class="details-grid">
+    <div class="info-card elegant-card">
+      <h2 class="section-heading">Facilities</h2>
+      <ul class="facility-list">
+        {% for f in hostel.facilities %}
+          <li><span class="bullet">✦</span> {{ f }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="info-card elegant-card">
+      <h2 class="section-heading">Warden Details</h2>
+      <div class="warden-details">
+        <div class="detail-row">
+          <span class="label">Name</span>
+          <span class="value">{{ hostel.warden.name }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Contact</span>
+          <span class="value pink-highlight">{{ hostel.warden.phone }}</span>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="info-card">
-    <h2>Location</h2>
+  <div class="info-card elegant-card location-card">
+    <h2 class="section-heading">Location</h2>
     <div class="map-wrapper" onclick="openMap()">
       <iframe src="{{ hostel.map }}" loading="lazy"></iframe>
     </div>
   </div>
-
 </section>
 
 <footer>© 2025 UniStay • All Rights Reserved</footer>
