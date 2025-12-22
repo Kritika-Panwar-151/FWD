@@ -47,14 +47,11 @@
     <input type="text" name="name" placeholder="Full Name" required>
     <input type="email" name="email" placeholder="College Email Address" required>
     <input type="tel" name="phone" placeholder="Phone Number" required>
+    <input type="text" id="hostelTypeDisplay" placeholder="Hostel Type" readonly>
+    <input type="hidden" id="hostelType" name="hostel_type">
 
-    <select name="hostel_type" required>
-        <option value="" disabled selected>Select Hostel Type</option>
-        <option value="boys">Boys Hostel</option>
-        <option value="girls">Girls Hostel</option>
-    </select>
 
-    <select name="Year" required>
+    <select name="year" required>
         <option value="" disabled selected>Select Year of Study</option>
         <option value="1">1st Year</option>
         <option value="2">2nd Year</option>
@@ -63,21 +60,21 @@
     </select>
 
     <!-- Preference Order -->
-    <select name="preference1" required>
+    <select name="pref_1" required>
         <option value="" disabled selected>Preference 1 (Most Preferred Hostel)</option>
         <option value="blue_haven">Blue Haven PG</option>
         <option value="skyline">Skyline Men’s Hostel</option>
         <option value="metro_pg">Metro PG</option>
     </select>
 
-    <select name="preference2" required> 
+    <select name="pref_2" required> 
         <option value="" disabled selected>Preference 2</option>
         <option value="blue_haven">Blue Haven PG</option>
         <option value="skyline">Skyline Men’s Hostel</option>
         <option value="metro_pg">Metro PG</option>
     </select>
 
-    <select name="preference3" required>
+    <select name="pref_3" required>
         <option value="" disabled selected>Preference 3</option>
         <option value="blue_haven">Blue Haven PG</option>
         <option value="skyline">Skyline Men’s Hostel</option>
@@ -85,8 +82,6 @@
     </select>
 
 </div>
-
-
         <div class="booking-btn">
             <button type="submit" class="btn btn-accent">
                 <i data-lucide="check-circle"></i>

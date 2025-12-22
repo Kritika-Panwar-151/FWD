@@ -163,3 +163,9 @@
   color: var(--muted);
 }
 
+#hostelTypeDisplay {
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.7);
+  cursor: not-allowed;
+}
+
