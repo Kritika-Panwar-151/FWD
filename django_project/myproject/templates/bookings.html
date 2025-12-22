@@ -38,7 +38,7 @@
         Fill in your details below. Our team will contact you to confirm availability.
     </p>
 
-    <form method="post" class="booking-form">
+    <form method="post" class="booking-form" id="bookingForm">
         {% csrf_token %}
 
         <div class="booking-grid">
@@ -47,12 +47,9 @@
     <input type="text" name="name" placeholder="Full Name" required>
     <input type="email" name="email" placeholder="College Email Address" required>
     <input type="tel" name="phone" placeholder="Phone Number" required>
+    <input type="text" id="hostelTypeDisplay" placeholder="Hostel Type" readonly>
+    <input type="hidden" id="hostelType" name="hostel_type">
 
-    <select name="hostel_type" required>
-        <option value="" disabled selected>Select Hostel Type</option>
-        <option value="boys">Boys Hostel</option>
-        <option value="girls">Girls Hostel</option>
-    </select>
 
     <select name="year" required>
         <option value="" disabled selected>Select Year of Study</option>
@@ -85,8 +82,6 @@
     </select>
 
 </div>
-
-
         <div class="booking-btn">
             <button type="submit" class="btn btn-accent">
                 <i data-lucide="check-circle"></i>
@@ -95,6 +90,31 @@
         </div>
 
     </form>
+
+    <!-- ================= BOOKING SUCCESS ================= -->
+<section class="booking-success" id="bookingSuccess" style="display:none;">
+
+  <div class="success-card">
+    <h2>✅ Booking Submitted Successfully</h2>
+    <p class="success-text">
+      Thank you for choosing <strong>UniStay</strong>.  
+      Our team will contact you shortly to confirm availability.
+    </p>
+
+    <div class="success-details">
+      <div><span>Name:</span> <strong id="s-name"></strong></div>
+      <div><span>Email:</span> <strong id="s-email"></strong></div>
+      <div><span>Phone:</span> <strong id="s-phone"></strong></div>
+      <div><span>Hostel Type:</span> <strong id="s-hostel"></strong></div>
+      <div><span>Year:</span> <strong id="s-year"></strong></div>
+      <div><span>Preference 1:</span> <strong id="s-pref1"></strong></div>
+      <div><span>Preference 2:</span> <strong id="s-pref2"></strong></div>
+      <div><span>Preference 3:</span> <strong id="s-pref3"></strong></div>
+    </div>
+  </div>
+
+</section>
+
 
 </section>
 

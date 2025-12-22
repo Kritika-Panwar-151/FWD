@@ -78,5 +78,26 @@ signupPassword.addEventListener("input", () => {
   passwordFeedback.style.display = "block";
 });
 
+// ================= SAVE GENDER ON SIGNUP =================
 
-//hiii
+const signupForm = document.querySelector(".signup-form");
+
+if (signupForm) {
+  signupForm.addEventListener("submit", function () {
+
+    const genderSelect = signupForm.querySelector('select[name="gender"]');
+
+    if (!genderSelect || !genderSelect.value) {
+      alert("Please select your gender");
+      return;
+    }
+
+    // Convert signup gender to hostel type
+    if (genderSelect.value === "M") {
+      localStorage.setItem("unistayGender", "boys");
+    } else if (genderSelect.value === "F") {
+      localStorage.setItem("unistayGender", "girls");
+    }
+  });
+}
+
