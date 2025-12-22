@@ -3,20 +3,23 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .models import Profile
+from django.http import JsonResponse
 
-from django.shortcuts import redirect
-from django.contrib.auth import logout
+from .models import Profile, ContactMessage   # ContactMessage added
 
 
+# =========================
+# LOGIN + SIGNUP
+# =========================
 def login_signup(request):
     if request.method == 'POST':
 
+        # ---------- SIGNUP ----------
         if 'signup' in request.POST:
             name = request.POST.get('fullname')
             email = request.POST.get('email')
             password = request.POST.get('password')
-            gender = request.POST.get('gender')  # NEW
+            gender = request.POST.get('gender')
 
             if User.objects.filter(username=email).exists():
                 messages.error(request, "User already exists.", extra_tags='signup')
@@ -27,17 +30,21 @@ def login_signup(request):
                     password=password,
                     first_name=name
                 )
+
+                # Create profile with gender
                 Profile.objects.create(
-                user=user,
-                gender=gender
+                    user=user,
+                    gender=gender
                 )
-                user.save()
-                messages.success(request, "Signup successful!", extra_tags='signup')
+
+                messages.success(request, "Signup successful! Please log in.", extra_tags='signup')
                 return redirect('login_page')
 
+        # ---------- LOGIN ----------
         elif 'login' in request.POST:
             email = request.POST.get('email')
             password = request.POST.get('password')
+
             user = authenticate(request, username=email, password=password)
 
             if user:
@@ -49,22 +56,26 @@ def login_signup(request):
     return render(request, 'login.html')
 
 
+# =========================
+# HOME (Gender Based)
+# =========================
 @login_required(login_url='/')
 def home(request):
-    gender = request.user.profile.gender  # get gender
-
-    context = {
-        'gender': gender
-    }
-    return render(request, 'home.html', context)
+    gender = request.user.profile.gender
+    return render(request, 'home.html', {'gender': gender})
 
 
-
+# =========================
+# LOGOUT (Instant)
+# =========================
 def custom_logout(request):
     logout(request)
     return redirect('login_page')
 
 
+# =========================
+# STATIC PAGES
+# =========================
 @login_required
 def bookings(request):
     return render(request, "bookings.html")
@@ -72,20 +83,48 @@ def bookings(request):
 
 @login_required
 def girls_hostels(request):
+    # Optional safety check
+    if request.user.profile.gender != 'F':
+        return redirect('home')
     return render(request, "girls_hostels.html")
 
 
 @login_required
 def boys_hostels(request):
+    # Optional safety check
+    if request.user.profile.gender != 'M':
+        return redirect('home')
     return render(request, "boys_hostels.html")
 
 
+# =========================
+# CONTACT (BACKEND ADDED)
+# =========================
 @login_required
 def contact(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        subject = request.POST.get("subject")
+        message = request.POST.get("message")
+
+        # Save message to DB
+        ContactMessage.objects.create(
+            name=name,
+            email=email,
+            subject=subject,
+            message=message
+        )
+
+        messages.success(request, "Your message has been sent successfully!")
+        return redirect("contact")
+
     return render(request, "contact.html")
 
 
-
+# =========================
+# HOSTEL DETAIL PAGE
+# =========================
 @login_required
 def hostel_detail(request, slug):
 
