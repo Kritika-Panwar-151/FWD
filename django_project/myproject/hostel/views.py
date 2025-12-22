@@ -145,6 +145,11 @@ def hostel_detail(request, slug):
                 "name": "Mrs. Anitha Rao",
                 "phone": "+91 91234 56789"
             },
+            'images': [
+                'images/girls_hostel1.jpeg', 
+                'images/girls_hostel2.jpeg', 
+                'images/girls_hostel3.jpeg', 
+            ],
             "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
         },
 

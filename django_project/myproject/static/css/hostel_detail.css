@@ -1,37 +1,221 @@
-.hostel-hero {
-  position: relative;
-  height: 70vh;
-  overflow: hidden;
+/* --- 1. GALLERY LAYOUT --- */
+/* 1. Reserve real space for the gallery */
+.gallery-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 1rem;
+  /* Adjust this height to match your 2 rows of 250px + gap */
+  min-height: 520px; 
 }
 
-.hostel-hero img {
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 250px);
+  gap: 15px;
+}
+
+/* Bento/Cluster Layout */
+.item-1 { grid-column: span 2; grid-row: span 2; }
+.item-2 { grid-column: span 2; grid-row: span 1; }
+
+.gallery-item {
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-bottom: 4px solid #ff69b4; /* 🌸 pink border */
+  border-radius: 15px;
+  border: 2px solid rgba(255, 105, 180, 0.3);
+  transition: transform 0s ease;
+  cursor: zoom-in;
 }
 
-.hero-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 2rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+/* 2. THE MAGNIFICATION LOGIC (Centering) */
+.gallery-item:hover {
+  z-index: 9999; 
 }
 
-.hostel-content {
-  max-width: 1100px;
-  margin: 60px auto;
-  padding: 0 1.5rem;
+/* ✅ JS-controlled zoom (2s hover) */
+.gallery-item.zoomed img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.6);
+
+  width: auto;
+  height: auto;
+  max-width: 80vw;
+  max-height: 80vh;
+
+  object-fit: contain;
+  background: #000;
+  box-shadow: 0 0 0 5000px rgba(0, 0, 0, 0.85);
+  border: 4px solid #ff69b4;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+
+/* 3. New Title Area Styling */
+.hostel-title-area {
+  margin-bottom: 2rem;
+}
+
+.hostel-title-area h1 {
+  font-size: 2.8rem;
+  color: #fff;
+  margin: 0;
+}
+
+.distance-tag {
+  color: #ff69b4;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+/* Zoomed state (activated by JS) */
+.gallery-item.zoomed img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.6);
+
+  width: auto;
+  height: auto;
+  max-width: 80vw;
+  max-height: 80vh;
+
+  object-fit: contain;
+  background: #000;
+  box-shadow: 0 0 0 5000px rgba(0, 0, 0, 0.85);
+  border: 4px solid #ff69b4;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* --- 3. ELEGANT TITLE AREA --- */
+/* --- 3. ELEGANT TITLE AREA (Centered) --- */
+.hostel-title-area {
+  max-width: 1200px;
+  margin: 40px auto 3rem auto;
+  padding: 0 1rem;
+  /* Changed from left to center */
+  text-align: center; 
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  align-items: center;
+}
+
+.elegant-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  /* Changed gradient direction to 'to bottom' or 'to right' works well for centered text */
+  background: linear-gradient(to bottom, #ffffff 40%, #ff69b4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.distance-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Ensures the pin icon and text stay centered together */
+  gap: 8px;
+  color: #9aa4b2;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+/* --- 4. CONTENT & CARDS --- */
+.hostel-content {
+  max-width: 1200px;
+  margin: 0 auto 100px auto;
+  padding: 0 1.5rem;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .info-card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,105,180,0.35);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   padding: 2rem;
   backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.info-card:hover {
+  border-color: rgba(255, 105, 180, 0.4);
+}
+
+.section-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  border-left: 4px solid #ff69b4;
+  padding-left: 15px;
+}
+
+/* --- 5. LISTS & DETAILS --- */
+.facility-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+
+.facility-list li {
+  color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bullet { color: #ff69b4; font-size: 0.8rem; }
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-row:last-child { border: none; }
+.label { color: #9aa4b2; }
+.value { color: #fff; font-weight: 600; }
+
+.pink-highlight {
+  color: #ff69b4 !important;
+  background: rgba(255, 105, 180, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* Map specific styling */
+.map-wrapper iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  border: none;
+}
+
+/* --- 6. RESPONSIVE --- */
+@media (max-width: 850px) {
+  .details-grid { grid-template-columns: 1fr; }
+  .elegant-title { font-size: 2.5rem; }
+  .facility-list { grid-template-columns: 1fr; }
 }

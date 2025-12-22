@@ -166,5 +166,13 @@
   <script src="{% static 'js/header.js' %}"></script>
   <script src="{% static 'js/home_4.js' %}"></script>
 
+  <script>
+    // Always overwrite gender on login
+    localStorage.setItem(
+      "unistayGender",
+      "{{ gender }}" === "M" ? "boys" : "girls"
+    );
+  </script>
+
 </body>
 </html>
