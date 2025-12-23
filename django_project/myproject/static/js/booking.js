@@ -116,3 +116,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+// ==========================================================
+  // FORCE WHITE COLOR ON ALL FIELDS WHEN LEAVING THE BOX
+  // ==========================================================
+  const allFields = form.querySelectorAll('input, select');
+
+  const applyWhiteColor = (el) => {
+    if (el.value && el.value.trim() !== "") {
+      // If it has text, make it bright white
+      el.style.setProperty("color", "#ffffff", "important");
+    } else {
+      // If empty, keep it muted (like a placeholder)
+      el.style.setProperty("color", "rgba(255, 255, 255, 0.45)", "important");
+    }
+  };
+
+  allFields.forEach(field => {
+    field.addEventListener('input', () => applyWhiteColor(field));
+    field.addEventListener('blur', () => applyWhiteColor(field));  // Triggers when moving to next box
+    field.addEventListener('change', () => applyWhiteColor(field));
+    
+    // Initial check for pre-filled data
+    applyWhiteColor(field);
+  });
