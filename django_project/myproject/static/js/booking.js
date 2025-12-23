@@ -1,19 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const gender = localStorage.getItem("unistayGender");
-
-  const displayField = document.getElementById("hostelTypeDisplay");
-  const hiddenField = document.getElementById("hostelType");
-
-  if (gender === "boys") {  
-    displayField.value = "Boys Hostel";
-    hiddenField.value = "boys";
-  } else if (gender === "girls") {
-    displayField.value = "Girls Hostel";
-    hiddenField.value = "girls";
-  } else {
-    displayField.value = "Not specified";
-    hiddenField.value = "";
+  // Init icons
+  if (typeof lucide !== "undefined") {
+    lucide.createIcons();
   }
 
   const form = document.getElementById("bookingForm");
@@ -24,12 +13,63 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // ===============================
+  // PREVENT DUPLICATE PREFERENCES
+  // ===============================
+  const prefSelects = [
+    form.querySelector('select[name="pref_1"]'),
+    form.querySelector('select[name="pref_2"]'),
+    form.querySelector('select[name="pref_3"]')
+  ];
+
+  function updatePreferenceOptions() {
+    // Get all selected values
+    const selectedValues = prefSelects
+      .map(select => select.value)
+      .filter(value => value !== "");
+
+    prefSelects.forEach(select => {
+      Array.from(select.options).forEach(option => {
+        if (
+          option.value !== "" &&
+          selectedValues.includes(option.value) &&
+          option.value !== select.value
+        ) {
+          option.disabled = true;
+        } else {
+          option.disabled = false;
+        }
+      });
+    });
+  }
+
+  // Attach change listener
+  prefSelects.forEach(select => {
+    select.addEventListener("change", updatePreferenceOptions);
+  });
+
+  // ===============================
+  // FORM SUBMIT (SUCCESS SCREEN)
+  // ===============================
   form.addEventListener("submit", function (e) {
     e.preventDefault(); // STOP PAGE RELOAD
 
     const data = new FormData(form);
 
-    // Fill summary safely
+    // Final safety check (just in case)
+    const prefs = [
+      data.get("pref_1"),
+      data.get("pref_2"),
+      data.get("pref_3")
+    ];
+
+    const uniquePrefs = new Set(prefs);
+    if (uniquePrefs.size !== prefs.length) {
+      alert("Please select different hostels for each preference.");
+      return;
+    }
+
+    // Fill success summary
     document.getElementById("s-name").textContent = data.get("name") || "-";
     document.getElementById("s-email").textContent = data.get("email") || "-";
     document.getElementById("s-phone").textContent = data.get("phone") || "-";

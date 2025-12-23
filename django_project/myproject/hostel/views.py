@@ -78,7 +78,36 @@ def custom_logout(request):
 # =========================
 @login_required
 def bookings(request):
-    return render(request, "bookings.html")
+    gender = request.user.profile.gender
+
+    BOYS_HOSTELS = [
+        ("blue_haven", "Blue Haven PG"),
+        ("skyline", "Skyline Men’s Hostel"),
+        ("metro_pg", "Metro PG"),
+    ]
+
+    GIRLS_HOSTELS = [
+        ("pink_petals", "Pink Petals PG"),
+        ("lotus_ladies", "Lotus Ladies Hostel"),
+        ("rose_residency", "Rose Residency"),
+    ]
+
+    # Select hostel list based on gender
+    if gender == "M":
+        hostels = BOYS_HOSTELS
+        hostel_type_display = "Boys Hostel"
+    else:
+        hostels = GIRLS_HOSTELS
+        hostel_type_display = "Girls Hostel"
+
+    context = {
+        "hostels": hostels,
+        "hostel_type_display": hostel_type_display,
+        "hostel_type": "boys" if gender == "M" else "girls",
+    }
+
+    return render(request, "bookings.html", context)
+
 
 
 @login_required
