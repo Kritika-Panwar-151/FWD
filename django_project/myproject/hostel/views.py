@@ -158,40 +158,44 @@ def contact(request):
 def hostel_detail_girls(request, slug):
 
     HOSTELS = {
-        "pink-petals": {
-            "name": "Pink Petals PG",
-            "image": "images/girls_hostel1.jpeg",
-            "distance": "0.4 km from BMSCE",
+        "international-hostel": {
+            "name": "International Hostel",
+            "distance": "Incampus",
             "facilities": [
-                "Home-style Food",
                 "2 / 3 Sharing Rooms",
+                "Common Washroom",
                 "High-Speed WiFi",
                 "Common Study Area",
                 "CCTV Surveillance",
-                "Laundry Facility"
+                "Lift Facility",
+                "Washing Machine Facilty"
+                "Special IH Mess"
+                "Night Canteen"
+                "24/7 Security"
             ],
             "warden": {
                 "name": "Mrs. Anitha Rao",
                 "phone": "+91 91234 56789"
             },
             'images': [
-                'images/girls_hostel1.jpeg', 
-                'images/girls_hostel2.jpeg', 
-                'images/girls_hostel3.jpeg', 
+                'images/Girls/IH/1.jpeg', 
+                'images/Girls/IH/2.jpeg', 
+                'images/Girls/IH/3.jpeg', 
             ],
             "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
         },
 
-        "lotus-ladies": {
-            "name": "Lotus Ladies Hostel",
-            "image": "images/girls_hostel2.jpeg",
-            "distance": "0.8 km from BMSCE",
+        "saraswati": {
+            "name": "Saraswati Hostel",
+            "distance": "400 m from BMSCE",
             "facilities": [
-                "Vegetarian Meals",
-                "Twin Sharing Rooms",
+                "2 /3 /5 Sharing rooms",
+                "Attached Washroom",
                 "Lift Facility",
-                "Terrace Garden",
-                "24x7 Security"
+                "Open Terrace",
+                "CCTV Surveillance",
+                "High-Speed WiFi",
+                "24/7 Security"
             ],
             "warden": {
                 "name": "Ms. Kavya Nair",
@@ -235,6 +239,7 @@ def hostel_detail_boys(request, slug):
             ],
             "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&output=embed"
         }
+
     }
 
     hostel = HOSTELS.get(slug)
