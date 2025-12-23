@@ -117,6 +117,7 @@ def bookings(request):
     # ---------- GET ----------
     gender = request.user.profile.gender
 
+<<<<<<< HEAD
     BOYS = [
         ("blue_haven", "Blue Haven PG"),
         ("skyline", "Skyline Men’s Hostel"),
@@ -124,9 +125,28 @@ def bookings(request):
     ]
 
     GIRLS = [
+=======
+    BOYS_HOSTELS = [
+        ("Himalaya", "Himalaya Hostel"),
+        ("International-Hostel", "International Hostel"),
+        ("Nandi", "Nandi Hostel"),
+        ("Sapthagiri", "Sapthagiri Hostel"),
+        ("Vidyapeeth", "Vidyapeeth Hostel")
+    ]
+
+    GIRLS_HOSTELS = [
+<<<<<<< HEAD
+>>>>>>> ac34668dd13dd043bfa10eff071e3079789ca810
         ("pink_petals", "Pink Petals PG"),
         ("lotus_ladies", "Lotus Ladies Hostel"),
-        ("rose_residency", "Rose Residency"),
+        ("rose_residency", "Rose Residency")
+=======
+        ("international-hostel", "International Hostel"),
+        ("saraswati", "Saraswati Hostel"),
+        ("sindhu", "Sindhu Hostel"),
+        ("sbi", "Sbi Hostel"),
+        ("yamuna", "Yamuna Hostel"),
+>>>>>>> 6207b0fe7953767a19104a6cb7526a7aee1bbe31
     ]
 
     if gender == "M":
@@ -188,6 +208,7 @@ def contact(request):
 def hostel_detail_girls(request, slug):
 
     HOSTELS = {
+<<<<<<< HEAD
         "pink-petals": {
             "name": "Pink Petals PG",
             "images": [
@@ -200,6 +221,156 @@ def hostel_detail_girls(request, slug):
         "lotus-ladies": {
             "name": "Lotus Ladies Hostel",
             "map": "https://maps.google.com/maps?q=BMSCE&output=embed"
+=======
+        "international-hostel": {
+            "name": "International Hostel",
+            "distance": "Incampus",
+            "facilities": [
+                "2 / 3 Sharing Rooms",
+                "Common Washroom",
+                "High-Speed WiFi",
+                "Common Study Area",
+                "CCTV Surveillance",
+                "Lift Facility",
+                "Washing Machine Facilty",
+                "Special IH Mess",
+                "Night Canteen",
+                "24/7 Security",
+                "No Gym facilty",
+                "Open Terrace",
+            ],
+            "warden": {
+                "name": "Mrs. Anitha Rao",
+                "phone": "+91 91234 56789",
+            },
+            'images': [
+                'images/Hostels/Girls/IH/1.jpeg', 
+                'images/Hostels/Girls/IH/2.jpeg', 
+                'images/Hostels/Girls/IH/3.jpeg', 
+            ],
+            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
+        },
+
+        "saraswati": {
+            "name": "Saraswati Hostel",
+            "distance": "400 m from BMSCE",
+            "facilities": [
+                "2 / 3 / 5 Sharing Rooms",
+                "Attached Washroom",
+                "High-Speed WiFi",
+                "No Common Study Area",
+                "CCTV Surveillance",
+                "Lift Facility",
+                "Washing Machine Facilty",
+                "No Mess inside the hostel",
+                "No Night Canteen",
+                "24/7 Security",
+                "No Gym Facility",
+                "Open Terrace",
+            ],
+            "warden": {
+                "name": "Ms. Kavya Nair",
+                "phone": "+91 99887 66554",
+            },
+            'images': [
+                'images/Hostels/Girls/Saraswati/1.jpeg', 
+                'images/Hostels/Girls/Saraswati/2.jpeg',
+                'images/Hostels/Girls/Saraswati/3.jpeg',
+                'images/Hostels/Girls/Saraswati/4.jpeg',
+            ],
+            "map": "https://maps.google.com/maps?q=BMSCE&t=&z=14&ie=UTF8&iwloc=&output=embed"
+        },
+
+        "sindhu": {
+            "name": "Sindhu Hostel",
+            "distance": "100 m from BMSCE",
+            "facilities": [
+                "2 / 3 Sharing Rooms",
+                "Attached Washroom",
+                "High-Speed WiFi",
+                "No Common Study Area",
+                "CCTV Surveillance",
+                "No Lift Facility",
+                "Washing Machine Facilty",
+                "No Mess inside the hostel",
+                "No Night Canteen",
+                "24/7 Security",
+                "No Gym Facilty",
+                "Open Terrace",
+            ],
+            "warden": {
+                "name": "Mrs. Mona Sharma",
+                "phone": "+91 91204 56789",
+            },
+            'images': [
+                'images/Hostels/Girls/Sindhu/1.jpeg', 
+                'images/Hostels/Girls/Sindhu/2.jpeg', 
+                'images/Hostels/Girls/Sindhu/3.jpeg', 
+            ],
+            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
+        },
+        "sbi": {
+            "name": "SBI Hostel",
+            "distance": "400 m from BMSCE",
+            "facilities": [
+                "2 / 3 Sharing Rooms",
+                "Attached Washroom",
+                "High-Speed WiFi",
+                "No Common Study Area",
+                "CCTV Surveillance",
+                "Lift Facility",
+                "Washing Machine Facilty",
+                "No Mess inside Hostel",
+                "No Night Canteen",
+                "24/7 Security",
+                "No Gym facilty",
+                "Open Terrace",
+            ],
+            "warden": {
+                "name": "Mrs. Monica Patil",
+                "phone": "+91 93345 56789",
+            },
+            'images': [
+                'images/Hostels/Girls/Sbi/1.jpeg', 
+                'images/Hostels/Girls/Sbi/2.jpeg', 
+                'images/Hostels/Girls/Sbi/3.png', 
+                'images/Hostels/Girls/Sbi/4.png', 
+                'images/Hostels/Girls/Sbi/5.png', 
+            ],
+            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
+        },
+        "yamuna": {
+            "name": "Yamuna Hostel",
+            "distance": "50 m from BMSCE",
+            "facilities": [
+                "2 Sharing Rooms",
+                "Attached Washroom",
+                "High-Speed WiFi",
+                "Common Study Area",
+                "CCTV Surveillance",
+                "Lift Facility",
+                "Washing Machine Facilty",
+                "No Mess inside Hostel",
+                "No Night Canteen",
+                "24/7 Security",
+                "Gym facilty",
+                "No Open Terrace",
+            ],
+            "warden": {
+                "name": "Mrs. Jaya Teli",
+                "phone": "+91 93345 52389",
+            },
+            'images': [
+                'images/Hostels/Girls/Yamuna/1.jpeg', 
+                'images/Hostels/Girls/Yamuna/2.jpeg', 
+                'images/Hostels/Girls/Yamuna/3.jpeg', 
+                'images/Hostels/Girls/Yamuna/4.jpeg', 
+                'images/Hostels/Girls/Yamuna/5.png',  
+                'images/Hostels/Girls/Yamuna/6.png', 
+                'images/Hostels/Girls/Yamuna/7.png', 
+            ],
+            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
+>>>>>>> ac34668dd13dd043bfa10eff071e3079789ca810
         }
     }
 
@@ -214,15 +385,152 @@ def hostel_detail_girls(request, slug):
 def hostel_detail_boys(request, slug):
 
     HOSTELS = {
+<<<<<<< HEAD
         "blue-haven": {
             "name": "Blue Haven PG",
             "images": [
                 "images/boys_hostel1.jpeg",
                 "images/boys_hostel2.jpeg",
                 "images/boys_hostel3.jpeg",
+=======
+        "Himalaya": {
+            "name": "Himalaya Hostel",
+            "distance": "100 m from BMSCE",
+            "facilities": [
+                "Single Sharing Rooms",
+                "Common Washroom",
+                "High-Speed WiFi",
+                "Common Study Area",
+                "CCTV Surveillance",
+                "Washing Machine Facilty",
+                "No Mess inside the Hostel",
+                "Night Canteen",
+                "24/7 Security",
+                "Gym facility",
+                "Open Terrace"
+            ],
+            "warden": {
+                "name": "Mr. Srinidhi",
+                "phone": "+91 9986273000"
+            },
+            "images": [
+                "images/Hostels/Boys/Himalaya/MH1.jpeg",
+                "images/Hostels/Boys/Himalaya/MH2.jpeg",
+                "images/Hostels/Boys/Himalaya/MH3.jpeg"
+            ],
+            "map": "https://maps.app.goo.gl/czjDh1i28RyVHhCx9"
+        },
+
+        "International-Hostel": {
+            "name": "International Hostel",
+            "distance": "Incampus",
+            "facilities": [
+                "2 / 3 Sharing Rooms",
+                "Common Washroom",
+                "High-Speed WiFi",
+                "Common Study Area",
+                "CCTV Surveillance",
+                "Lift Facility",
+                "Washing Machine Facilty",
+                "Special IH Mess",
+                "Night Canteen",
+                "24/7 Security",
+                "No Gym facilty",
+                "Open Terrace"
+            ],
+            "warden": {
+                "name": "Mrs. Anitha Rao",
+                "phone": "+91 91234 56789"
+            },
+            'images': [
+                'images/Hostels/Boys/IH/IH1.jpeg', 
+                'images/Hostels/Boys/IH/IH2.jpeg', 
+                'images/Hostels/Boys/IH/IH3.jpeg' 
+            ],
+            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
+        },
+
+        "Nandi": {
+            "name": "Nandi Hostel",
+            "distance": "700 m from BMSCE",
+            "facilities": [
+                "2 / 3 Sharing Rooms",
+                "Attached Washroom",
+                "High-Speed WiFi",
+                "CCTV Surveillance",
+                "Lift Facility",
+                "Washing Machine Facilty",
+                "Integrated Mess",
+                "24/7 Security",
+                "No Gym facility",
+                "Open Terrace"
+            ],
+            "warden": {
+                "name": "Mr. Raghavendra",
+                "phone": "+91 98765 43210"
+            },
+            "images": [
+                "images/Hostels/Boys/Nandi/N1.jpeg",
+                "images/Hostels/Boys/Nandi/N2.jpeg",
+                "images/Hostels/Boys/Nandi/N3.jpeg",
+                "images/Hostels/Boys/Nandi/N4.jpeg"
+            ],
+            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&output=embed"
+        },
+
+        "Sapthagiri": {
+            "name": "Sapthagiri Hostel",
+            "distance": "450 m from BMSCE",
+            "facilities": [
+                "2 / 3 Sharing Rooms",
+                "Attached Washroom",
+                "High-Speed WiFi",
+                "CCTV Surveillance",
+                "Lift Facility",
+                "Washing Machine Facility",
+                "No integrated Mess",
+                "24/7 Security",
+                "No Gym facility",
+                "Open Terrace"
+            ],
+            "warden": {
+                "name": "Mr. Kanishka Gupta",
+                "phone": "+91 98765 43210"
+            },
+            "images": [
+                "images/Hostels/Boys/Sapthagiri/S1.jpeg",
+                "images/Hostels/Boys/Sapthagiri/S2.jpeg"
+            ],
+            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&output=embed"
+        },
+
+        "Vidyapeeth": {
+            "name": "Vidyapeeth Hostel",
+            "distance": "900 m from BMSCE",
+            "facilities": [
+                "2 / 3 Sharing Rooms",
+                "Attached Washroom",
+                "High-Speed WiFi",
+                "CCTV Surveillance",
+                "Lift Facility",
+                "Washing Machine Facility",
+                "Integrated Mess",
+                "24/7 Security",
+                "No Gym facility",
+                "Open Terrace"
+            ],
+            "warden": {
+                "name": "Mr. Mandeep Singh",
+                "phone": "+91 8252439516"
+            },
+            "images": [
+                "images/Hostels/Boys/Vidyapeeth/V1.jpeg",
+                "images/Hostels/Boys/Vidyapeeth/V2.jpeg"
+>>>>>>> ac34668dd13dd043bfa10eff071e3079789ca810
             ],
             "map": "https://maps.google.com/maps?q=BMSCE&output=embed"
         }
+
     }
 
     hostel = HOSTELS.get(slug)
