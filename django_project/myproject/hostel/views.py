@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.core.exceptions import ValidationError
+from .models import Booking
 
 from .models import Profile, ContactMessage, Booking
 
@@ -77,55 +79,65 @@ def custom_logout(request):
 # =========================
 # BOOKINGS (PERMANENT)
 # =========================
+def check_usn(request):
+    usn = request.GET.get('usn', None)
+    # Returns True if USN exists, False otherwise
+    is_taken = Booking.objects.filter(usn__iexact=usn).exists()
+    return JsonResponse({'is_taken': is_taken})
+
 @login_required
 def bookings(request):
 
     user_email = request.user.email
-
-    # 🔍 CHECK EXISTING BOOKING (KEY FIX)
     existing_booking = Booking.objects.filter(email=user_email).first()
 
-    # ---------- POST ----------
     if request.method == "POST":
 
-        # ❌ BLOCK DUPLICATE BOOKINGS
         if existing_booking:
-            return JsonResponse(
-                {"status": "error", "message": "Booking already exists"},
-                status=400
-            )
+            messages.error(request, "You have already submitted a booking.")
+            return redirect("bookings")
+
+        phone = request.POST.get("phone")
+        usn = request.POST.get("usn")
+
+        # ✅ Phone validation
+        if not phone.isdigit() or len(phone) != 10:
+            messages.error(request, "Phone number must be exactly 10 digits.")
+            return redirect("bookings")
+
+        # ✅ USN validation
+        if len(usn) != 10:
+            messages.error(request, "USN must be exactly 10 characters.")
+            return redirect("bookings")
+
+        # ✅ Duplicate USN check
+        if Booking.objects.filter(usn=usn).exists():
+            messages.error(request, "This USN is already registered.")
+            return redirect("bookings")
 
         try:
             Booking.objects.create(
                 name=request.POST.get("name"),
-                email=user_email,  # 🔒 TRUST SERVER
-                phone=request.POST.get("phone"),
+                email=user_email,
+                usn=usn,
+                phone=phone,
                 hostel_type=request.POST.get("hostel_type"),
                 year=int(request.POST.get("year")),
                 pref_1=request.POST.get("pref_1"),
                 pref_2=request.POST.get("pref_2"),
                 pref_3=request.POST.get("pref_3"),
             )
-            return JsonResponse({"status": "success"})
+            messages.success(request, "Booking submitted successfully!")
+            return redirect("bookings")
 
-        except Exception as e:
-            return JsonResponse(
-                {"status": "error", "message": str(e)},
-                status=400
-            )
+        except Exception:
+            messages.error(request, "Something went wrong. Please try again.")
+            return redirect("bookings")
+
 
     # ---------- GET ----------
     gender = request.user.profile.gender
 
-<<<<<<< HEAD
-    BOYS = [
-        ("blue_haven", "Blue Haven PG"),
-        ("skyline", "Skyline Men’s Hostel"),
-        ("metro_pg", "Metro PG"),
-    ]
-
-    GIRLS = [
-=======
     BOYS_HOSTELS = [
         ("Himalaya", "Himalaya Hostel"),
         ("International-Hostel", "International Hostel"),
@@ -135,35 +147,29 @@ def bookings(request):
     ]
 
     GIRLS_HOSTELS = [
-<<<<<<< HEAD
->>>>>>> ac34668dd13dd043bfa10eff071e3079789ca810
-        ("pink_petals", "Pink Petals PG"),
-        ("lotus_ladies", "Lotus Ladies Hostel"),
-        ("rose_residency", "Rose Residency")
-=======
         ("international-hostel", "International Hostel"),
         ("saraswati", "Saraswati Hostel"),
         ("sindhu", "Sindhu Hostel"),
         ("sbi", "Sbi Hostel"),
         ("yamuna", "Yamuna Hostel"),
->>>>>>> 6207b0fe7953767a19104a6cb7526a7aee1bbe31
     ]
 
     if gender == "M":
-        hostels = BOYS
+        hostels = BOYS_HOSTELS
         hostel_type_display = "Boys Hostel"
         hostel_type = "boys"
     else:
-        hostels = GIRLS
+        hostels = GIRLS_HOSTELS
         hostel_type_display = "Girls Hostel"
         hostel_type = "girls"
 
     return render(request, "bookings.html", {
-        "existing_booking": existing_booking,  # 🔥 PERMANENT FLAG
+        "existing_booking": existing_booking,
         "hostels": hostels,
         "hostel_type_display": hostel_type_display,
         "hostel_type": hostel_type,
     })
+
 
 
 # =========================
@@ -208,20 +214,6 @@ def contact(request):
 def hostel_detail_girls(request, slug):
 
     HOSTELS = {
-<<<<<<< HEAD
-        "pink-petals": {
-            "name": "Pink Petals PG",
-            "images": [
-                "images/girls_hostel1.jpeg",
-                "images/girls_hostel2.jpeg",
-                "images/girls_hostel3.jpeg",
-            ],
-            "map": "https://maps.google.com/maps?q=BMSCE&output=embed"
-        },
-        "lotus-ladies": {
-            "name": "Lotus Ladies Hostel",
-            "map": "https://maps.google.com/maps?q=BMSCE&output=embed"
-=======
         "international-hostel": {
             "name": "International Hostel",
             "distance": "Incampus",
@@ -370,7 +362,6 @@ def hostel_detail_girls(request, slug):
                 'images/Hostels/Girls/Yamuna/7.png', 
             ],
             "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
->>>>>>> ac34668dd13dd043bfa10eff071e3079789ca810
         }
     }
 
@@ -385,14 +376,6 @@ def hostel_detail_girls(request, slug):
 def hostel_detail_boys(request, slug):
 
     HOSTELS = {
-<<<<<<< HEAD
-        "blue-haven": {
-            "name": "Blue Haven PG",
-            "images": [
-                "images/boys_hostel1.jpeg",
-                "images/boys_hostel2.jpeg",
-                "images/boys_hostel3.jpeg",
-=======
         "Himalaya": {
             "name": "Himalaya Hostel",
             "distance": "100 m from BMSCE",
@@ -526,7 +509,6 @@ def hostel_detail_boys(request, slug):
             "images": [
                 "images/Hostels/Boys/Vidyapeeth/V1.jpeg",
                 "images/Hostels/Boys/Vidyapeeth/V2.jpeg"
->>>>>>> ac34668dd13dd043bfa10eff071e3079789ca810
             ],
             "map": "https://maps.google.com/maps?q=BMSCE&output=embed"
         }

@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import RegexValidator
+
 
 # =========================
 # USER PROFILE
@@ -34,6 +36,11 @@ class ContactMessage(models.Model):
 # =========================
 # HOSTEL BOOKING (LOCKED)
 # =========================
+phone_validator = RegexValidator(
+    regex=r'^\d{10}$',
+    message="Phone number must be exactly 10 digits"
+)
+
 class Booking(models.Model):
 
     HOSTEL_TYPE_CHOICES = [
@@ -45,7 +52,10 @@ class Booking(models.Model):
     email = models.EmailField(unique=True)
 
     name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=10,validators=[phone_validator])
+
+    usn = models.CharField(max_length=20, unique=True)
+
 
     hostel_type = models.CharField(
         max_length=10,

@@ -11,4 +11,5 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('hostel_detail_girls/<slug:slug>/', views.hostel_detail_girls, name='hostel_detail_girls'),
     path('hostel_detail_boys/<slug:slug>/', views.hostel_detail_boys, name='hostel_detail_boys'),
+    path('check-usn/', views.check_usn, name='check_usn'),
 ]
