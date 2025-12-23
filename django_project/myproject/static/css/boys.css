@@ -430,3 +430,42 @@ footer {
     transform: translateY(0);
   }
 }
+/* =========================================
+   BOYS HOSTEL CARD TEXT FIX (MATCH GIRLS)
+========================================= */
+
+/* Remove anchor underline & blue color */
+.card-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block;
+}
+
+/* Hostel name — WHITE, no underline */
+.card-link h3 {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+/* Location text (Basavanagudi · 0.4 km) */
+.card-link .muted {
+  color: var(--muted) !important;
+  text-decoration: none !important;
+}
+
+/* Facilities line: 2/3 Sharing · Meals · WiFi · AC */
+.card-link p:not(.muted) {
+  color: #ffffff !important;   /* same soft grey as girls */
+  text-decoration: none !important;
+}
+
+/* Price stays blue gradient */
+.card-link .price {
+  text-decoration: none !important;
+}
+
+/* Kill underline on hover */
+.card-link:hover,
+.card-link:hover * {
+  text-decoration: none !important;
+}
