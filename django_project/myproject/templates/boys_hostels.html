@@ -3,98 +3,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>UniStay • Boys Hostels</title>
 
-    <title>UniStay • Boys Hostels</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/header_1.css' %}">
+  <link rel="stylesheet" href="{% static 'css/boys.css' %}">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/header_1.css' %}">
-    <link rel="stylesheet" href="{% static 'css/boys.css' %}">
-
-    <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
 
-    {% include 'partials/header.html' with active_page='boys' %}
+  {% include 'partials/header.html' with active_page='boys' %}
 
-    <!-- ---------------------- BANNER ---------------------- -->
-    <section class="intro-banner">
-        <div class="intro-content">
-            <h1>Find Your Perfect Boy's Hostel Near BMSCE</h1>
-            <p>Verified, safe, and budget-friendly living for BMSCE boys</p>
-            <button class="btn btn-accent" onclick="scrollToId('boysHostels')">
-                <i data-lucide="search"></i> Start Exploring
-            </button>
-        </div>
-    </section>
+  <!-- ------------------ PAGE CONTENT ------------------ -->
 
-    <!-- ---------------------- HOSTELS ---------------------- -->
-    <section id="boysHostels" class="grid">
+  <section class="intro-banner">
+    <div class="intro-content">
+      <h1>Find Your Perfect Boys's Hostel Near BMSCE</h1>
+      <p>Safe, comfortable, and student-friendly accommodations.</p>
+      <button class="btn btn-accent" onclick="scrollToId('boysHostels')">
+        <i data-lucide="search"></i> Start Exploring
+      </button>
+    </div>
+  </section>
 
-        <!-- CARD 1 -->
-        <div class="card">
-            <img src="{% static 'images/boys_hostel1.jpeg' %}">
-            <div class="card-body">
-                <h3>Blue Haven PG</h3>
-                <p class="muted">Basavanagudi · 0.5 km</p>
-                <p>Twin Sharing · WiFi · Meals · Gym</p>
-                <div class="price">₹9,999 / month</div>
-            </div>
-        </div>
+  <!-- ------------------ HOSTEL LIST ------------------ -->
+  <section id="boysHostels" class="grid">
 
-        <!-- CARD 2 -->
-        <div class="card">
-            <img src="{% static 'images/boys_hostel2.jpeg' %}">
-            <div class="card-body">
-                <h3>Skyline Men’s Hostel</h3>
-                <p class="muted">Near Campus · 0.8 km</p>
-                <p>Single · Attached Bath · AC</p>
-                <div class="price">₹12,000 / month</div>
-            </div>
-        </div>
+    <!-- CARD 1 : CLICKABLE -->
+    <a href="{% url 'hostel_detail_boys' 'blue-haven' %}" class="card-link">
+  <div class="card">
+    <img src="{% static 'images/boys_hostel1.jpeg' %}">
+    <div class="card-body">
+      <h3>Blue haven</h3>
+      <p class="muted">Basavanagudi · 0.4 km</p>
+      <p>2/3 Sharing · Meals · WiFi · AC</p>
+      <div class="price">₹10,999 / month</div>
+    </div>
+  </div>
+</a>
 
-        <!-- CARD 3 -->
-        <div class="card">
-            <img src="{% static 'images/boys_hostel3.jpeg' %}">
-            <div class="card-body">
-                <h3>Metro PG</h3>
-                <p class="muted">Jayanagar · 1.2 km</p>
-                <p>2/3 Sharing · Security · Laundry</p>
-                <div class="price">₹8,499 / month</div>
-            </div>
-        </div>
+<!--
 
-        <!-- CARD 4 (NO IMAGE) -->
-        <div class="card">
-            <div class="card-body">
-                <h3>Coming Soon Hostel</h3>
-                <p class="muted">Location TBD</p>
-                <p>Details will be updated soon</p>
-                <div class="price">—</div>
-            </div>
-        </div>
+    <div class="card">
+      <img src="{% static 'images/girls_hostel2.jpeg' %}">
+      <div class="card-body">
+        <h3>Lotus Ladies Hostel</h3>
+        <p class="muted">Near Gate · 0.8 km</p>
+        <p>Twin Sharing · Attached Bath · Terrace Garden</p>
+        <div class="price">₹9,990 / month</div>
+      </div>
+    </div>
 
-        <!-- CARD 5 (NO IMAGE) -->
-        <div class="card">
-            <div class="card-body">
-                <h3>Upcoming Boys PG</h3>
-                <p class="muted">Near BMSCE</p>
-                <p>Facilities to be announced</p>
-                <div class="price">—</div>
-            </div>
-        </div>
+    <div class="card">
+      <img src="{% static 'images/girls_hostel3.jpeg' %}">
+      <div class="card-body">
+        <h3>Serene Stay</h3>
+        <p class="muted">Srinivasa Nagar · 1.1 km</p>
+        <p>Single · Laundry · Security · WiFi</p>
+        <div class="price">₹11,499 / month</div>
+      </div>
+    </div>
 
-    </section>
+    <div class="card">
+      <div class="card-body">
+        <h3>Coming Soon Girls Hostel</h3>
+        <p class="muted">Location TBD</p>
+        <p>Details will be updated soon</p>
+        <div class="price">—</div>
+      </div>
+    </div>
 
-    <!-- ---------------------- FOOTER ---------------------- -->
-    <footer>© 2025 UniStay • All Rights Reserved</footer>
+    
+    <div class="card">
+      <div class="card-body">
+        <h3>Upcoming Ladies PG</h3>
+        <p class="muted">Near BMSCE</p>
+        <p>Facilities to be announced</p>
+        <div class="price">—</div>
+      </div>
+    </div>
+-->
+  </section>
 
-    <!-- JS -->
-    <script src="{% static 'js/header.js' %}"></script>
-    <script src="{% static 'js/boys.js' %}"></script>
+  <footer>© 2025 UniStay • All Rights Reserved</footer>
+  <!-- JS -->
+  <script src="{% static 'js/header.js' %}"></script>
+  <script src="{% static 'js/boys.js' %}"></script>
 
 </body>
 </html>

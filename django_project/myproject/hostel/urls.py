@@ -9,6 +9,6 @@ urlpatterns = [
     path('girls/', views.girls_hostels, name='girls_hostels'),
     path('boys/', views.boys_hostels, name='boys_hostels'),
     path('contact/', views.contact, name='contact'),
-
-    path('hostel/<slug:slug>/', views.hostel_detail, name='hostel_detail'),
+    path('hostel_detail_girls/<slug:slug>/', views.hostel_detail_girls, name='hostel_detail_girls'),
+    path('hostel_detail_boys/<slug:slug>/', views.hostel_detail_boys, name='hostel_detail_boys'),
 ]
