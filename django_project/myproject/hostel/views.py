@@ -147,11 +147,27 @@ def bookings(request):
     ]
 
     GIRLS_HOSTELS = [
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ac34668dd13dd043bfa10eff071e3079789ca810
+        ("pink_petals", "Pink Petals PG"),
+        ("lotus_ladies", "Lotus Ladies Hostel"),
+        ("rose_residency", "Rose Residency")
+=======
+>>>>>>> bef23f654de2e41a0b5db3074aea0c254c86853d
+>>>>>>> 67a6ea46d93df6327880d2d41c241861a7a93c21
         ("international-hostel", "International Hostel"),
         ("saraswati", "Saraswati Hostel"),
         ("sindhu", "Sindhu Hostel"),
         ("sbi", "Sbi Hostel"),
+<<<<<<< HEAD
         ("yamuna", "Yamuna Hostel"),
+=======
+        ("yamuna", "Yamuna Hostel")
+>>>>>>> 67a6ea46d93df6327880d2d41c241861a7a93c21
     ]
 
     if gender == "M":
