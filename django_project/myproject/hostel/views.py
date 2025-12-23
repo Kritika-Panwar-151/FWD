@@ -155,7 +155,7 @@ def contact(request):
 # HOSTEL DETAIL PAGE
 # =========================
 @login_required
-def hostel_detail(request, slug):
+def hostel_detail_girls(request, slug):
 
     HOSTELS = {
         "pink-petals": {
@@ -206,4 +206,39 @@ def hostel_detail(request, slug):
     if not hostel:
         return redirect("girls_hostels")
 
-    return render(request, "hostel_detail.html", {"hostel": hostel})
+    return render(request, "hostel_detail_girls.html", {"hostel": hostel})
+
+
+@login_required
+def hostel_detail_boys(request, slug):
+
+    HOSTELS = {
+        "blue-haven": {
+            "name": "Blue Haven PG",
+            "distance": "0.4 km from BMSCE",
+            "facilities": [
+                "North & South Indian Meals",
+                "2 / 3 Sharing Rooms",
+                "High-Speed WiFi",
+                "Gym Facility",
+                "CCTV Security",
+                "Laundry"
+            ],
+            "warden": {
+                "name": "Mr. Raghavendra",
+                "phone": "+91 98765 43210"
+            },
+            "images": [
+                "images/boys_hostel1.jpeg",
+                "images/boys_hostel2.jpeg",
+                "images/boys_hostel3.jpeg"
+            ],
+            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&output=embed"
+        }
+    }
+
+    hostel = HOSTELS.get(slug)
+    if not hostel:
+        return redirect("boys_hostels")
+
+    return render(request, "hostel_detail_boys.html", {"hostel": hostel})
