@@ -87,12 +87,41 @@ def check_usn(request):
 
 @login_required
 def bookings(request):
-
     user_email = request.user.email
     existing_booking = Booking.objects.filter(email=user_email).first()
 
-    if request.method == "POST":
+    # 1. Mapping Dictionary: Converts technical values to the actual names you want shown
+    HOSTEL_NAMES = {
+        "Himalaya": "Himalaya Hostel",
+        "International-Hostel": "International Hostel",
+        "international-hostel": "International Hostel",
+        "Nandi": "Nandi Hostel",
+        "Sapthagiri": "Sapthagiri Hostel",
+        "Vidyapeeth": "Vidyapeeth Hostel",
+        "saraswati": "Saraswati Hostel",
+        "sindhu": "Sindhu Hostel",
+        "sbi": "Sbi Hostel",
+        "yamuna": "Yamuna Hostel",
+    }
 
+    # 2. Display Logic for the Success Card
+    booking_display = None
+    if existing_booking:
+        booking_display = {
+            "name": existing_booking.name,
+            "email": existing_booking.email,
+            "usn": existing_booking.usn,
+            "phone": existing_booking.phone,
+            "hostel": existing_booking.hostel_type.capitalize() + " Hostel",
+            "year": existing_booking.year,
+            # This looks up the name in the dictionary. If it can't find it, it uses the raw ID.
+            "pref_1": HOSTEL_NAMES.get(existing_booking.pref_1, existing_booking.pref_1),
+            "pref_2": HOSTEL_NAMES.get(existing_booking.pref_2, existing_booking.pref_2),
+            "pref_3": HOSTEL_NAMES.get(existing_booking.pref_3, existing_booking.pref_3),
+        }
+
+    # 3. Form Submission logic (POST)
+    if request.method == "POST":
         if existing_booking:
             messages.error(request, "You have already submitted a booking.")
             return redirect("bookings")
@@ -100,17 +129,15 @@ def bookings(request):
         phone = request.POST.get("phone")
         usn = request.POST.get("usn")
 
-        # ✅ Phone validation
+        # Validation
         if not phone.isdigit() or len(phone) != 10:
             messages.error(request, "Phone number must be exactly 10 digits.")
             return redirect("bookings")
 
-        # ✅ USN validation
         if len(usn) != 10:
             messages.error(request, "USN must be exactly 10 characters.")
             return redirect("bookings")
 
-        # ✅ Duplicate USN check
         if Booking.objects.filter(usn=usn).exists():
             messages.error(request, "This USN is already registered.")
             return redirect("bookings")
@@ -129,13 +156,11 @@ def bookings(request):
             )
             messages.success(request, "Booking submitted successfully!")
             return redirect("bookings")
-
         except Exception:
             messages.error(request, "Something went wrong. Please try again.")
             return redirect("bookings")
 
-
-    # ---------- GET ----------
+    # 4. GET logic (Dropdown lists)
     gender = request.user.profile.gender
 
     BOYS_HOSTELS = [
@@ -147,12 +172,11 @@ def bookings(request):
     ]
 
     GIRLS_HOSTELS = [
-
         ("international-hostel", "International Hostel"),
         ("saraswati", "Saraswati Hostel"),
         ("sindhu", "Sindhu Hostel"),
         ("sbi", "Sbi Hostel"),
-        ("yamuna", "Yamuna Hostel")
+        ("yamuna", "Yamuna Hostel"),
     ]
 
     if gender == "M":
@@ -166,11 +190,11 @@ def bookings(request):
 
     return render(request, "bookings.html", {
         "existing_booking": existing_booking,
+        "booking_display": booking_display,
         "hostels": hostels,
         "hostel_type_display": hostel_type_display,
         "hostel_type": hostel_type,
     })
-
 
 
 # =========================
