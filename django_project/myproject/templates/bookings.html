@@ -2,20 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>UniStay • Booking</title>
+  <title>UniStay • Booking</title>
 
-    <!-- SAME HEADER CSS -->
-    <link rel="stylesheet" href="{% static 'css/header_1.css' %}">
-    <link rel="stylesheet" href="{% static 'css/boys.css' %}">
+  <!-- HEADER CSS -->
+  <link rel="stylesheet" href="{% static 'css/header_1.css' %}">
+  <link rel="stylesheet" href="{% static 'css/boys.css' %}">
+  <link rel="stylesheet" href="{% static 'css/booking.css' %}">
 
-    <!-- BOOKING ONLY CSS -->
-    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
-
-    <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -24,97 +22,106 @@
 
 <!-- ================= BANNER ================= -->
 <section class="intro-banner">
-    <div class="intro-content">
-        <h1>Book Your Hostel</h1>
-        <p>Submit your preferences and secure your stay near BMSCE</p>
-    </div>
+  <div class="intro-content">
+    <h1>Book Your Hostel</h1>
+    <p>Submit your preferences and secure your stay near BMSCE</p>
+  </div>
 </section>
 
 <!-- ================= BOOKING FORM ================= -->
 <section class="booking-wrapper">
 
-    <h2 class="booking-title">Hostel Booking Form</h2>
-    <p class="booking-desc">
-        Fill in your details below. Our team will contact you to confirm availability.
-    </p>
+  <h2 class="booking-title">Hostel Booking Form</h2>
+  <p class="booking-desc">
+    Fill in your details below. Our team will contact you to confirm availability.
+  </p>
 
-    <form method="post" class="booking-form" id="bookingForm">
-        {% csrf_token %}
+  <form method="post" class="booking-form" id="bookingForm">
+    {% csrf_token %}
 
-        <div class="booking-grid">
+    <div class="booking-grid">
 
-    <!-- Basic Details -->
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="email" name="email" placeholder="College Email Address" required>
-    <input type="tel" name="phone" placeholder="Phone Number" required>
-    <input type="text" id="hostelTypeDisplay" placeholder="Hostel Type" readonly>
-    <input type="hidden" id="hostelType" name="hostel_type">
+      <!-- BASIC DETAILS -->
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="College Email Address" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
 
+      <!-- HOSTEL TYPE (SERVER CONTROLLED) -->
+      <input type="text"
+             value="{{ hostel_type_display }}"
+             readonly>
 
-    <select name="year" required>
+      <input type="hidden"
+             name="hostel_type"
+             value="{{ hostel_type }}">
+
+      <!-- YEAR -->
+      <select name="year" required>
         <option value="" disabled selected>Select Year of Study</option>
         <option value="1">1st Year</option>
         <option value="2">2nd Year</option>
         <option value="3">3rd Year</option>
         <option value="4">4th Year</option>
-    </select>
+      </select>
 
-    <!-- Preference Order -->
-    <select name="pref_1" required>
-        <option value="" disabled selected>Preference 1 (Most Preferred Hostel)</option>
-        <option value="blue_haven">Blue Haven PG</option>
-        <option value="skyline">Skyline Men’s Hostel</option>
-        <option value="metro_pg">Metro PG</option>
-    </select>
+      <!-- PREFERENCES (GENDER FILTERED) -->
+      <select name="pref_1" required>
+        <option value="" disabled selected>
+          Preference 1 (Most Preferred Hostel)
+        </option>
+        {% for value, label in hostels %}
+          <option value="{{ value }}">{{ label }}</option>
+        {% endfor %}
+      </select>
 
-    <select name="pref_2" required> 
+      <select name="pref_2" required>
         <option value="" disabled selected>Preference 2</option>
-        <option value="blue_haven">Blue Haven PG</option>
-        <option value="skyline">Skyline Men’s Hostel</option>
-        <option value="metro_pg">Metro PG</option>
-    </select>
+        {% for value, label in hostels %}
+          <option value="{{ value }}">{{ label }}</option>
+        {% endfor %}
+      </select>
 
-    <select name="pref_3" required>
+      <select name="pref_3" required>
         <option value="" disabled selected>Preference 3</option>
-        <option value="blue_haven">Blue Haven PG</option>
-        <option value="skyline">Skyline Men’s Hostel</option>
-        <option value="metro_pg">Metro PG</option>
-    </select>
+        {% for value, label in hostels %}
+          <option value="{{ value }}">{{ label }}</option>
+        {% endfor %}
+      </select>
 
-</div>
-        <div class="booking-btn">
-            <button type="submit" class="btn btn-accent">
-                <i data-lucide="check-circle"></i>
-                Submit Booking
-            </button>
-        </div>
-
-    </form>
-
-    <!-- ================= BOOKING SUCCESS ================= -->
-<section class="booking-success" id="bookingSuccess" style="display:none;">
-
-  <div class="success-card">
-    <h2>✅ Booking Submitted Successfully</h2>
-    <p class="success-text">
-      Thank you for choosing <strong>UniStay</strong>.  
-      Our team will contact you shortly to confirm availability.
-    </p>
-
-    <div class="success-details">
-      <div><span>Name:</span> <strong id="s-name"></strong></div>
-      <div><span>Email:</span> <strong id="s-email"></strong></div>
-      <div><span>Phone:</span> <strong id="s-phone"></strong></div>
-      <div><span>Hostel Type:</span> <strong id="s-hostel"></strong></div>
-      <div><span>Year:</span> <strong id="s-year"></strong></div>
-      <div><span>Preference 1:</span> <strong id="s-pref1"></strong></div>
-      <div><span>Preference 2:</span> <strong id="s-pref2"></strong></div>
-      <div><span>Preference 3:</span> <strong id="s-pref3"></strong></div>
     </div>
-  </div>
 
-</section>
+    <div class="booking-btn">
+      <button type="submit" class="btn btn-accent">
+        <i data-lucide="check-circle"></i>
+        Submit Booking
+      </button>
+    </div>
 
+  </form>
+
+  <!-- ================= SUCCESS SCREEN ================= -->
+  <section class="booking-success" id="bookingSuccess" style="display:none;">
+
+    <div class="success-card">
+      <h2>✅ Booking Submitted Successfully</h2>
+      <p class="success-text">
+        Thank you for choosing <strong>UniStay</strong>.  
+        Our team will contact you shortly to confirm availability.
+      </p>
+
+      <div class="success-details">
+        <div><span>Name:</span> <strong id="s-name"></strong></div>
+        <div><span>Email:</span> <strong id="s-email"></strong></div>
+        <div><span>Phone:</span> <strong id="s-phone"></strong></div>
+        <div><span>Hostel Type:</span> <strong id="s-hostel"></strong></div>
+        <div><span>Year:</span> <strong id="s-year"></strong></div>
+        <div><span>Preference 1:</span> <strong id="s-pref1"></strong></div>
+        <div><span>Preference 2:</span> <strong id="s-pref2"></strong></div>
+        <div><span>Preference 3:</span> <strong id="s-pref3"></strong></div>
+      </div>
+    </div>
+
+  </section>
 
 </section>
 
