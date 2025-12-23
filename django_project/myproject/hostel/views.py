@@ -89,17 +89,11 @@ def bookings(request):
     ]
 
     GIRLS_HOSTELS = [
-<<<<<<< HEAD
-        ("pink_petals", "Pink Petals PG"),
-        ("lotus_ladies", "Lotus Ladies Hostel"),
-        ("rose_residency", "Rose Residency")
-=======
         ("international-hostel", "International Hostel"),
         ("saraswati", "Saraswati Hostel"),
         ("sindhu", "Sindhu Hostel"),
         ("sbi", "Sbi Hostel"),
-        ("yamuna", "Yamuna Hostel"),
->>>>>>> 6207b0fe7953767a19104a6cb7526a7aee1bbe31
+        ("yamuna", "Yamuna Hostel")
     ]
 
     # Select hostel list based on gender
