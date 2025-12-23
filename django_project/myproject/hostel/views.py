@@ -81,15 +81,17 @@ def bookings(request):
     gender = request.user.profile.gender
 
     BOYS_HOSTELS = [
-        ("blue_haven", "Blue Haven PG"),
-        ("skyline", "Skyline Men’s Hostel"),
-        ("metro_pg", "Metro PG"),
+        ("Himalaya", "Himalaya Hostel"),
+        ("International-Hostel", "International Hostel"),
+        ("Nandi", "Nandi Hostel"),
+        ("Sapthagiri", "Sapthagiri Hostel"),
+        ("Vidyapeeth", "Vidyapeeth Hostel")
     ]
 
     GIRLS_HOSTELS = [
         ("pink_petals", "Pink Petals PG"),
         ("lotus_ladies", "Lotus Ladies Hostel"),
-        ("rose_residency", "Rose Residency"),
+        ("rose_residency", "Rose Residency")
     ]
 
     # Select hostel list based on gender
@@ -213,143 +215,139 @@ def hostel_detail_girls(request, slug):
 def hostel_detail_boys(request, slug):
 
     HOSTELS = {
-        "mh": {
+        "Himalaya": {
             "name": "Himalaya Hostel",
-            "distance": "0.1 km from BMSCE",
+            "distance": "100 m from BMSCE",
             "facilities": [
                 "Single Sharing Rooms",
-                "High-Speed WiFi",
-                "Gym Facility",
-                "CCTV Security",
-                "Washing Machine Facility",
-                "Indoor Games"
                 "Common Washroom",
-                "Common Study Area"
-                "Night Canteen"
+                "High-Speed WiFi",
+                "Common Study Area",
+                "CCTV Surveillance",
+                "Washing Machine Facilty",
+                "No Mess inside the Hostel",
+                "Night Canteen",
+                "24/7 Security",
+                "Gym facility",
+                "Open Terrace"
             ],
             "warden": {
                 "name": "Mr. Srinidhi",
                 "phone": "+91 9986273000"
             },
             "images": [
-                "images/boys_hostel1.jpeg",
-                "images/boys_hostel2.jpeg",
-                "images/boys_hostel3.jpeg"
+                "images/Hostels/Boys/Himalaya/MH1.jpeg",
+                "images/Hostels/Boys/Himalaya/MH2.jpeg",
+                "images/Hostels/Boys/Himalaya/MH3.jpeg"
             ],
-            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&output=embed"
-        }
+            "map": "https://maps.app.goo.gl/czjDh1i28RyVHhCx9"
+        },
 
-        "blue-haven": {
-            "name": "Blue Haven PG",
-            "distance": "0.4 km from BMSCE",
+        "International-Hostel": {
+            "name": "International Hostel",
+            "distance": "Incampus",
             "facilities": [
-                "North & South Indian Meals",
                 "2 / 3 Sharing Rooms",
+                "Common Washroom",
                 "High-Speed WiFi",
-                "Gym Facility",
-                "CCTV Security",
-                "Laundry"
+                "Common Study Area",
+                "CCTV Surveillance",
+                "Lift Facility",
+                "Washing Machine Facilty",
+                "Special IH Mess",
+                "Night Canteen",
+                "24/7 Security",
+                "No Gym facilty",
+                "Open Terrace"
+            ],
+            "warden": {
+                "name": "Mrs. Anitha Rao",
+                "phone": "+91 91234 56789"
+            },
+            'images': [
+                'images/Hostels/Boys/IH/IH1.jpeg', 
+                'images/Hostels/Boys/IH/IH2.jpeg', 
+                'images/Hostels/Boys/IH/IH3.jpeg' 
+            ],
+            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
+        },
+
+        "Nandi": {
+            "name": "Nandi Hostel",
+            "distance": "700 m from BMSCE",
+            "facilities": [
+                "2 / 3 Sharing Rooms",
+                "Attached Washroom",
+                "High-Speed WiFi",
+                "CCTV Surveillance",
+                "Lift Facility",
+                "Washing Machine Facilty",
+                "Integrated Mess",
+                "24/7 Security",
+                "No Gym facility",
+                "Open Terrace"
             ],
             "warden": {
                 "name": "Mr. Raghavendra",
                 "phone": "+91 98765 43210"
             },
             "images": [
-                "images/boys_hostel1.jpeg",
-                "images/boys_hostel2.jpeg",
-                "images/boys_hostel3.jpeg"
+                "images/Hostels/Boys/Nandi/N1.jpeg",
+                "images/Hostels/Boys/Nandi/N2.jpeg",
+                "images/Hostels/Boys/Nandi/N3.jpeg",
+                "images/Hostels/Boys/Nandi/N4.jpeg"
             ],
             "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&output=embed"
-        }
+        },
 
-        "blue-haven": {
-            "name": "Blue Haven PG",
-            "distance": "0.4 km from BMSCE",
+        "Sapthagiri": {
+            "name": "Sapthagiri Hostel",
+            "distance": "450 m from BMSCE",
             "facilities": [
-                "North & South Indian Meals",
                 "2 / 3 Sharing Rooms",
+                "Attached Washroom",
                 "High-Speed WiFi",
-                "Gym Facility",
-                "CCTV Security",
-                "Laundry"
+                "CCTV Surveillance",
+                "Lift Facility",
+                "Washing Machine Facility",
+                "No integrated Mess",
+                "24/7 Security",
+                "No Gym facility",
+                "Open Terrace"
             ],
             "warden": {
-                "name": "Mr. Raghavendra",
+                "name": "Mr. Kanishka Gupta",
                 "phone": "+91 98765 43210"
             },
             "images": [
-                "images/boys_hostel1.jpeg",
-                "images/boys_hostel2.jpeg",
-                "images/boys_hostel3.jpeg"
+                "images/Hostels/Boys/Sapthagiri/S1.jpeg",
+                "images/Hostels/Boys/Sapthagiri/S2.jpeg"
             ],
             "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&output=embed"
-        }
+        },
 
-        "blue-haven": {
-            "name": "Blue Haven PG",
-            "distance": "0.4 km from BMSCE",
+        "Vidyapeeth": {
+            "name": "Vidyapeeth Hostel",
+            "distance": "900 m from BMSCE",
             "facilities": [
-                "North & South Indian Meals",
                 "2 / 3 Sharing Rooms",
+                "Attached Washroom",
                 "High-Speed WiFi",
-                "Gym Facility",
-                "CCTV Security",
-                "Laundry"
+                "CCTV Surveillance",
+                "Lift Facility",
+                "Washing Machine Facility",
+                "Integrated Mess",
+                "24/7 Security",
+                "No Gym facility",
+                "Open Terrace"
             ],
             "warden": {
-                "name": "Mr. Raghavendra",
-                "phone": "+91 98765 43210"
+                "name": "Mr. Mandeep Singh",
+                "phone": "+91 8252439516"
             },
             "images": [
-                "images/boys_hostel1.jpeg",
-                "images/boys_hostel2.jpeg",
-                "images/boys_hostel3.jpeg"
-            ],
-            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&output=embed"
-        }
-
-        "blue-haven": {
-            "name": "Blue Haven PG",
-            "distance": "0.4 km from BMSCE",
-            "facilities": [
-                "North & South Indian Meals",
-                "2 / 3 Sharing Rooms",
-                "High-Speed WiFi",
-                "Gym Facility",
-                "CCTV Security",
-                "Laundry"
-            ],
-            "warden": {
-                "name": "Mr. Raghavendra",
-                "phone": "+91 98765 43210"
-            },
-            "images": [
-                "images/boys_hostel1.jpeg",
-                "images/boys_hostel2.jpeg",
-                "images/boys_hostel3.jpeg"
-            ],
-            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&output=embed"
-        }
-
-        "blue-haven": {
-            "name": "Blue Haven PG",
-            "distance": "0.4 km from BMSCE",
-            "facilities": [
-                "North & South Indian Meals",
-                "2 / 3 Sharing Rooms",
-                "High-Speed WiFi",
-                "Gym Facility",
-                "CCTV Security",
-                "Laundry"
-            ],
-            "warden": {
-                "name": "Mr. Raghavendra",
-                "phone": "+91 98765 43210"
-            },
-            "images": [
-                "images/boys_hostel1.jpeg",
-                "images/boys_hostel2.jpeg",
-                "images/boys_hostel3.jpeg"
+                "images/Hostels/Boys/Vidyapeeth/V1.jpeg",
+                "images/Hostels/Boys/Vidyapeeth/V2.jpeg"
             ],
             "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&output=embed"
         }
