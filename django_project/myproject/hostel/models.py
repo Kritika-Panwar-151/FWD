@@ -1,22 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# =========================
+# USER PROFILE
+# =========================
 class Profile(models.Model):
-    # Choices for gender
     GENDER_CHOICES = [
         ('M', 'Male'),
         ('F', 'Female'),
     ]
 
-    # One profile per user
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    # Gender field
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
 
     def __str__(self):
         return self.user.username
 
+
+# =========================
+# CONTACT FORM
+# =========================
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -26,3 +29,36 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.subject}"
+
+
+# =========================
+# HOSTEL BOOKING (LOCKED)
+# =========================
+class Booking(models.Model):
+
+    HOSTEL_TYPE_CHOICES = [
+        ('boys', 'Boys Hostel'),
+        ('girls', 'Girls Hostel'),
+    ]
+
+    # 🔒 ONE BOOKING PER USER / EMAIL
+    email = models.EmailField(unique=True)
+
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=15)
+
+    hostel_type = models.CharField(
+        max_length=10,
+        choices=HOSTEL_TYPE_CHOICES
+    )
+
+    year = models.PositiveSmallIntegerField()
+
+    pref_1 = models.CharField(max_length=100)
+    pref_2 = models.CharField(max_length=100)
+    pref_3 = models.CharField(max_length=100)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.email} - {self.hostel_type}"

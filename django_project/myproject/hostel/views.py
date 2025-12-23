@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
-from .models import Profile, ContactMessage   # ContactMessage added
+from .models import Profile, ContactMessage, Booking
 
 
 # =========================
@@ -31,13 +31,13 @@ def login_signup(request):
                     first_name=name
                 )
 
-                # Create profile with gender
-                Profile.objects.create(
-                    user=user,
-                    gender=gender
-                )
+                Profile.objects.create(user=user, gender=gender)
 
-                messages.success(request, "Signup successful! Please log in.", extra_tags='signup')
+                messages.success(
+                    request,
+                    "Signup successful! Please log in.",
+                    extra_tags='signup'
+                )
                 return redirect('login_page')
 
         # ---------- LOGIN ----------
@@ -57,16 +57,17 @@ def login_signup(request):
 
 
 # =========================
-# HOME (Gender Based)
+# HOME
 # =========================
 @login_required(login_url='/')
 def home(request):
-    gender = request.user.profile.gender
-    return render(request, 'home.html', {'gender': gender})
+    return render(request, 'home.html', {
+        'gender': request.user.profile.gender
+    })
 
 
 # =========================
-# LOGOUT (Instant)
+# LOGOUT
 # =========================
 def custom_logout(request):
     logout(request)
@@ -74,45 +75,82 @@ def custom_logout(request):
 
 
 # =========================
-# STATIC PAGES
+# BOOKINGS (PERMANENT)
 # =========================
 @login_required
 def bookings(request):
+
+    user_email = request.user.email
+
+    # 🔍 CHECK EXISTING BOOKING (KEY FIX)
+    existing_booking = Booking.objects.filter(email=user_email).first()
+
+    # ---------- POST ----------
+    if request.method == "POST":
+
+        # ❌ BLOCK DUPLICATE BOOKINGS
+        if existing_booking:
+            return JsonResponse(
+                {"status": "error", "message": "Booking already exists"},
+                status=400
+            )
+
+        try:
+            Booking.objects.create(
+                name=request.POST.get("name"),
+                email=user_email,  # 🔒 TRUST SERVER
+                phone=request.POST.get("phone"),
+                hostel_type=request.POST.get("hostel_type"),
+                year=int(request.POST.get("year")),
+                pref_1=request.POST.get("pref_1"),
+                pref_2=request.POST.get("pref_2"),
+                pref_3=request.POST.get("pref_3"),
+            )
+            return JsonResponse({"status": "success"})
+
+        except Exception as e:
+            return JsonResponse(
+                {"status": "error", "message": str(e)},
+                status=400
+            )
+
+    # ---------- GET ----------
     gender = request.user.profile.gender
 
-    BOYS_HOSTELS = [
+    BOYS = [
         ("blue_haven", "Blue Haven PG"),
         ("skyline", "Skyline Men’s Hostel"),
         ("metro_pg", "Metro PG"),
     ]
 
-    GIRLS_HOSTELS = [
+    GIRLS = [
         ("pink_petals", "Pink Petals PG"),
         ("lotus_ladies", "Lotus Ladies Hostel"),
         ("rose_residency", "Rose Residency"),
     ]
 
-    # Select hostel list based on gender
     if gender == "M":
-        hostels = BOYS_HOSTELS
+        hostels = BOYS
         hostel_type_display = "Boys Hostel"
+        hostel_type = "boys"
     else:
-        hostels = GIRLS_HOSTELS
+        hostels = GIRLS
         hostel_type_display = "Girls Hostel"
+        hostel_type = "girls"
 
-    context = {
+    return render(request, "bookings.html", {
+        "existing_booking": existing_booking,  # 🔥 PERMANENT FLAG
         "hostels": hostels,
         "hostel_type_display": hostel_type_display,
-        "hostel_type": "boys" if gender == "M" else "girls",
-    }
-
-    return render(request, "bookings.html", context)
+        "hostel_type": hostel_type,
+    })
 
 
-
+# =========================
+# GENDER RESTRICTED HOSTELS
+# =========================
 @login_required
 def girls_hostels(request):
-    # Optional safety check
     if request.user.profile.gender != 'F':
         return redirect('home')
     return render(request, "girls_hostels.html")
@@ -120,39 +158,31 @@ def girls_hostels(request):
 
 @login_required
 def boys_hostels(request):
-    # Optional safety check
     if request.user.profile.gender != 'M':
         return redirect('home')
     return render(request, "boys_hostels.html")
 
 
 # =========================
-# CONTACT (BACKEND ADDED)
+# CONTACT
 # =========================
 @login_required
 def contact(request):
     if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        subject = request.POST.get("subject")
-        message = request.POST.get("message")
-
-        # Save message to DB
         ContactMessage.objects.create(
-            name=name,
-            email=email,
-            subject=subject,
-            message=message
+            name=request.POST.get("name"),
+            email=request.POST.get("email"),
+            subject=request.POST.get("subject"),
+            message=request.POST.get("message"),
         )
-
-        messages.success(request, "Your message has been sent successfully!")
+        messages.success(request, "We’ll reach out to you soon!")
         return redirect("contact")
 
     return render(request, "contact.html")
 
 
 # =========================
-# HOSTEL DETAIL PAGE
+# HOSTEL DETAILS
 # =========================
 @login_required
 def hostel_detail_girls(request, slug):
@@ -160,49 +190,20 @@ def hostel_detail_girls(request, slug):
     HOSTELS = {
         "pink-petals": {
             "name": "Pink Petals PG",
-            "image": "images/girls_hostel1.jpeg",
-            "distance": "0.4 km from BMSCE",
-            "facilities": [
-                "Home-style Food",
-                "2 / 3 Sharing Rooms",
-                "High-Speed WiFi",
-                "Common Study Area",
-                "CCTV Surveillance",
-                "Laundry Facility"
+            "images": [
+                "images/girls_hostel1.jpeg",
+                "images/girls_hostel2.jpeg",
+                "images/girls_hostel3.jpeg",
             ],
-            "warden": {
-                "name": "Mrs. Anitha Rao",
-                "phone": "+91 91234 56789"
-            },
-            'images': [
-                'images/girls_hostel1.jpeg', 
-                'images/girls_hostel2.jpeg', 
-                'images/girls_hostel3.jpeg', 
-            ],
-            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            "map": "https://maps.google.com/maps?q=BMSCE&output=embed"
         },
-
         "lotus-ladies": {
             "name": "Lotus Ladies Hostel",
-            "image": "images/girls_hostel2.jpeg",
-            "distance": "0.8 km from BMSCE",
-            "facilities": [
-                "Vegetarian Meals",
-                "Twin Sharing Rooms",
-                "Lift Facility",
-                "Terrace Garden",
-                "24x7 Security"
-            ],
-            "warden": {
-                "name": "Ms. Kavya Nair",
-                "phone": "+91 99887 66554"
-            },
-            "map": "https://maps.google.com/maps?q=BMSCE&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            "map": "https://maps.google.com/maps?q=BMSCE&output=embed"
         }
     }
 
     hostel = HOSTELS.get(slug)
-
     if not hostel:
         return redirect("girls_hostels")
 
@@ -215,25 +216,12 @@ def hostel_detail_boys(request, slug):
     HOSTELS = {
         "blue-haven": {
             "name": "Blue Haven PG",
-            "distance": "0.4 km from BMSCE",
-            "facilities": [
-                "North & South Indian Meals",
-                "2 / 3 Sharing Rooms",
-                "High-Speed WiFi",
-                "Gym Facility",
-                "CCTV Security",
-                "Laundry"
-            ],
-            "warden": {
-                "name": "Mr. Raghavendra",
-                "phone": "+91 98765 43210"
-            },
             "images": [
                 "images/boys_hostel1.jpeg",
                 "images/boys_hostel2.jpeg",
-                "images/boys_hostel3.jpeg"
+                "images/boys_hostel3.jpeg",
             ],
-            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&output=embed"
+            "map": "https://maps.google.com/maps?q=BMSCE&output=embed"
         }
     }
 
