@@ -295,7 +295,7 @@ def hostel_detail_girls(request, slug):
                 'images/Hostels/Girls/Saraswati/3.jpeg',
                 'images/Hostels/Girls/Saraswati/4.jpeg',
             ],
-            "map": "https://maps.google.com/maps?q=BMSCE&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d734.9035799974403!2d77.56373140879737!3d12.93875727578748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15005f98015f%3A0x7cb9fe1b8fade2ea!2sBhoomika!5e0!3m2!1sen!2sin!4v1766545419635!5m2!1sen!2sin"
         },
 
         "sindhu": {
@@ -324,7 +324,7 @@ def hostel_detail_girls(request, slug):
                 'images/Hostels/Girls/Sindhu/2.jpeg', 
                 'images/Hostels/Girls/Sindhu/3.jpeg', 
             ],
-            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            "map": "https://www.google.com/maps/embed?pb=!4v1766544943516!6m8!1m7!1sEqKplMRGDr0ngRS3IP1MOg!2m2!1d12.93976656536628!2d77.56552222397191!3f200.530635752027!4f24.023951524013086!5f0.7820865974627469"
         },
         "sbi": {
             "name": "SBI Hostel",
@@ -354,7 +354,7 @@ def hostel_detail_girls(request, slug):
                 'images/Hostels/Girls/Sbi/4.png', 
                 'images/Hostels/Girls/Sbi/5.png', 
             ],
-            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            "map": "https://www.google.com/maps/embed?pb=!4v1766545044846!6m8!1m7!1sq9ZNtO9mslTcv2OoLNVDmQ!2m2!1d12.94075896208654!2d77.5643480260269!3f315.49415467126073!4f22.10950895199869!5f0.7820865974627469"
         },
         "yamuna": {
             "name": "Yamuna Hostel",
@@ -386,7 +386,7 @@ def hostel_detail_girls(request, slug):
                 'images/Hostels/Girls/Yamuna/6.png', 
                 'images/Hostels/Girls/Yamuna/7.png', 
             ],
-            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            "map": "https://www.google.com/maps/embed?pb=!4v1766544891705!6m8!1m7!1sCn0qGJciLBUoMkdPTf21WQ!2m2!1d12.93977622125206!2d77.56561720176323!3f47.44767376796364!4f16.801678076964677!5f0.7820865974627469"  
         }
     }
 
@@ -424,9 +424,10 @@ def hostel_detail_boys(request, slug):
             "images": [
                 "images/Hostels/Boys/Himalaya/MH1.jpeg",
                 "images/Hostels/Boys/Himalaya/MH2.jpeg",
-                "images/Hostels/Boys/Himalaya/MH3.jpeg"
+                "images/Hostels/Boys/Himalaya/MH3.jpeg",
+                "images/Hostels/Boys/Himalaya/MH4.jpeg"
             ],
-            "map": "https://maps.app.goo.gl/czjDh1i28RyVHhCx9"
+            "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.4720098413404!2d77.56423497454614!3d12.941620315535925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae158b11e34d2f%3A0x5f4adbdbab8bd80f!2sBMS%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1766545032514!5m2!1sen!2sin"
         },
 
         "International-Hostel": {
@@ -455,7 +456,7 @@ def hostel_detail_boys(request, slug):
                 'images/Hostels/Boys/IH/IH2.jpeg', 
                 'images/Hostels/Boys/IH/IH3.jpeg' 
             ],
-            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.4720098413404!2d77.56423497454614!3d12.941620315535925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae158b11e34d2f%3A0x5f4adbdbab8bd80f!2sBMS%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1766545032514!5m2!1sen!2sin"
         },
 
         "Nandi": {
@@ -483,7 +484,7 @@ def hostel_detail_boys(request, slug):
                 "images/Hostels/Boys/Nandi/N3.jpeg",
                 "images/Hostels/Boys/Nandi/N4.jpeg"
             ],
-            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&output=embed"
+            "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.4158757818327!2d77.5656742745462!3d12.945219215457197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1533701ca961%3A0xba9753f5ed73144f!2sNandi%20Block%2C%20NBH-7%20BMSETH!5e0!3m2!1sen!2sin!4v1766544929659!5m2!1sen!2sin" 
         },
 
         "Sapthagiri": {
@@ -507,9 +508,10 @@ def hostel_detail_boys(request, slug):
             },
             "images": [
                 "images/Hostels/Boys/Sapthagiri/S1.jpeg",
-                "images/Hostels/Boys/Sapthagiri/S2.jpeg"
+                "images/Hostels/Boys/Sapthagiri/S2.jpeg",
+                "images/Hostels/Boys/Sapthagiri/S3.jpeg"
             ],
-            "map": "https://maps.google.com/maps?q=Basavanagudi%20Bangalore&output=embed"
+            "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.538618027471!2d77.55994087454606!3d12.937348615629391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15002b74c61b%3A0x1460c06426f40124!2sSapthagiri%20Block%20BMSET%20Boys%20hostel!5e0!3m2!1sen!2sin!4v1766544867910!5m2!1sen!2sin"
         },
 
         "Vidyapeeth": {
@@ -533,9 +535,11 @@ def hostel_detail_boys(request, slug):
             },
             "images": [
                 "images/Hostels/Boys/Vidyapeeth/V1.jpeg",
-                "images/Hostels/Boys/Vidyapeeth/V2.jpeg"
+                "images/Hostels/Boys/Vidyapeeth/V2.jpeg",
+                "images/Hostels/Boys/Vidyapeeth/V3.jpeg",
+                "images/Hostels/Boys/Vidyapeeth/V4.jpeg"
             ],
-            "map": "https://maps.google.com/maps?q=BMSCE&output=embed"
+            "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.5892711188644!2d77.55760357454606!3d12.934099215700424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3f00775ccc21%3A0xb60ed9d1a4fd34eb!2sVidyapeeta%20Block(NBH-14)%20BMSETH!5e0!3m2!1sen!2sin!4v1766544614840!5m2!1sen!2sin"
         }
 
     }
