@@ -1,8 +1,7 @@
 # UniStay – Hostel Booking & Management System
 
 ## Full Stack Web Development Project
-
----
+![Home Page](images_readme/home.png)
 
 ## Project Description
 - UniStay is a web-based hostel booking and management system
@@ -10,7 +9,7 @@
 - Built as part of the Full Stack Web Development (FWD) course
 - Provides a centralized platform for hostel information and booking
 
----
+
 
 ## Project Information
 - **Project Title**: UniStay
@@ -21,7 +20,7 @@
 - **University**: Visvesvaraya Technological University (VTU)
 - **Academic Year**: Sep 2025 – Jan 2026
 
----
+
 
 ## Team Members
 - Krati Goel (1BF24CS148)
@@ -29,13 +28,13 @@
 - Kritarth Teli (1BF24CS150)
 - Kritika Panwar (1BF24CS151)
 
----
+
 
 ## Project Guide
 - Mrs. Rachana M S
 - Assistant Professor, Department of CSE, BMSCE
 
----
+
 
 ## Features
 - User registration and login
@@ -47,7 +46,7 @@
 - Contact page for queries
 - Admin management using Django Admin Panel
 
----
+
 
 ## Technologies Used
 
@@ -69,7 +68,7 @@
 - Django Development Server
 - Google Maps API
 
----
+
 
 ## System Requirements
 
@@ -88,7 +87,7 @@
 - Web Browser: Google Chrome 
 - IDE: Visual Studio Code
 
----
+
 
 ## Project Architecture
 - Django Model–View–Template (MVT) architecture
@@ -98,7 +97,7 @@
 - Django ORM for database operations
 - Secure authentication and CSRF protection
 
----
+
 
 ## Backend Flow
 - User action sends HTTP request from frontend
@@ -111,41 +110,41 @@
 - Response rendered using templates
 - Admin operations handled via Django Admin Panel
 
----
+
 
 ## User Interface Screenshots
 
 ### Login Page
-![Login Page](screenshots/login.png)
+![Login Page](images_readme/login.png)
 
-### Registration Page
-![Registration Page](screenshots/register.png)
+### Signup Page
+![Registration Page](images_readme/signup.png)
 
 ### Boys Hostel Listing Page
-![Boys Hostel Listing](screenshots/boys-hostel-list.png)
+![Boys Hostel Listing](images_readme/boys-hostel-list.png)
 
 ### Girls Hostel Listing Page
-![Girls Hostel Listing](screenshots/girls-hostel-list.png)
+![Girls Hostel Listing](images_readme/girls-hostel-list.png)
 
 ### Girls Hostel Detail Page
-![Girls Hostel Detail Page](screenshots/girls-hostel-detail.png)
+![Girls Hostel Detail Page](images_readme/girls-hostel-detail.png)
 
 ### Boys Hostel Detail Page
-![Boys Hostel Detail Page](screenshots/boys-hostel-detail.png)
+![Boys Hostel Detail Page](images_readme/boys-hostel-detail.png)
 
 ### Booking Page
-![Booking Page](screenshots/booking.png)
+![Booking Page](images_readme/booking.png)
 
 ### Booking Confirmation Page
-![Booking Confirmation](screenshots/confirmation.png)
+![Booking Confirmation](images_readme/confirmation.png)
 
 ### Contact Page
-![Contact Page](screenshots/contact.png)
+![Contact Page](images_readme/contact.png)
 
 ### Admin Panel
-![Admin Panel](screenshots/admin.png)
+![Admin Panel](images_readme/admin.png)
 
----
+
 
 ## Conclusion
 - UniStay provides a secure and user-friendly hostel booking platform
@@ -153,7 +152,7 @@
 - Successfully integrates frontend, backend, and database
 - Meets all academic objectives of the FWD course
 
----
+
 
 ## Future Enhancements
 - Admin approval and rejection of bookings
@@ -164,7 +163,7 @@
 - Mobile application version
 - Support for multiple institutions
 
----
+
 
 ## References
 - https://www.djangoproject.com/
@@ -177,9 +176,4 @@
 - https://code.visualstudio.com/
 - https://developers.google.com/maps
 
----
 
-## Author
-- **Kritika Panwar**
-- B.E. CSE – Semester 3
-- B.M.S. College of Engineering
