@@ -10,9 +10,9 @@ from .models import Booking
 from .models import Profile, ContactMessage, Booking
 
 
-# =========================
+
 # LOGIN + SIGNUP
-# =========================
+
 def login_signup(request):
     if request.method == 'POST':
 
@@ -58,9 +58,9 @@ def login_signup(request):
     return render(request, 'login.html')
 
 
-# =========================
+
 # HOME
-# =========================
+
 @login_required(login_url='/')
 def home(request):
     return render(request, 'home.html', {
@@ -68,17 +68,17 @@ def home(request):
     })
 
 
-# =========================
+
 # LOGOUT
-# =========================
+
 def custom_logout(request):
     logout(request)
     return redirect('login_page')
 
 
-# =========================
+
 # BOOKINGS (PERMANENT)
-# =========================
+
 def check_usn(request):
     usn = request.GET.get('usn', None)
     # Returns True if USN exists, False otherwise
@@ -197,9 +197,9 @@ def bookings(request):
     })
 
 
-# =========================
+
 # GENDER RESTRICTED HOSTELS
-# =========================
+
 @login_required
 def girls_hostels(request):
     if request.user.profile.gender != 'F':
@@ -214,9 +214,9 @@ def boys_hostels(request):
     return render(request, "boys_hostels.html")
 
 
-# =========================
+
 # CONTACT
-# =========================
+
 @login_required
 def contact(request):
     if request.method == "POST":
@@ -232,9 +232,9 @@ def contact(request):
     return render(request, "contact.html")
 
 
-# =========================
+
 # HOSTEL DETAILS
-# =========================
+
 @login_required
 def hostel_detail_girls(request, slug):
 

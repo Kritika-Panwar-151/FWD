@@ -464,7 +464,7 @@ footer {
   text-decoration: none !important;
 }
 
-/* Kill underline on hover */
+/* Remove underline on hover */
 .card-link:hover,
 .card-link:hover * {
   text-decoration: none !important;

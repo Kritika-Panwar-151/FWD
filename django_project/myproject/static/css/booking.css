@@ -230,9 +230,7 @@
     height: 50px;
     width: 100%;
 }
-/* ==========================================
-   UNIFY TEXT COLOR FOR ALL FIELDS
-   ========================================== */
+/*   UNIFY TEXT COLOR FOR ALL FIELDS*/
 
 /* 1. Base Input Style: Forces text to be white at all times */
 .booking-form input,

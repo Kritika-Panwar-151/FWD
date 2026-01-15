@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 
 
-# =========================
+
 # USER PROFILE
-# =========================
+
 class Profile(models.Model):
     GENDER_CHOICES = [
         ('M', 'Male'),
@@ -19,9 +19,9 @@ class Profile(models.Model):
         return self.user.username
 
 
-# =========================
+
 # CONTACT FORM
-# =========================
+
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -33,9 +33,9 @@ class ContactMessage(models.Model):
         return f"{self.name} - {self.subject}"
 
 
-# =========================
-# HOSTEL BOOKING (LOCKED)
-# =========================
+
+# HOSTEL BOOKING
+
 phone_validator = RegexValidator(
     regex=r'^\d{10}$',
     message="Phone number must be exactly 10 digits"
@@ -48,7 +48,7 @@ class Booking(models.Model):
         ('girls', 'Girls Hostel'),
     ]
 
-    # 🔒 ONE BOOKING PER USER / EMAIL
+    #ONE BOOKING PER USER / EMAIL
     email = models.EmailField(unique=True)
 
     name = models.CharField(max_length=100)
