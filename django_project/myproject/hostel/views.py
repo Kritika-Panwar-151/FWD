@@ -352,7 +352,7 @@ def hostel_detail_girls(request, slug):
                 'images/Hostels/Girls/Sbi/2.jpeg', 
                 'images/Hostels/Girls/Sbi/3.png', 
                 'images/Hostels/Girls/Sbi/4.png', 
-                'images/Hostels/Girls/Sbi/5.png', 
+                
             ],
             "map": "https://www.google.com/maps/embed?pb=!4v1766545044846!6m8!1m7!1sq9ZNtO9mslTcv2OoLNVDmQ!2m2!1d12.94075896208654!2d77.5643480260269!3f315.49415467126073!4f22.10950895199869!5f0.7820865974627469"
         },
